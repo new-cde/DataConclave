@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "dateLabel": "16 JUL",
+        "title": "KEYNOTE ADDRESS",
+        "description": "ML in Production — Dr. Sarah Chen delivers the opening keynote on deploying machine learning models at scale.",
+        "time": "9:00 AM - 10:00 AM",
+        "location": "Grand Ballroom, Hilton Hotel",
+        "speaker": "Dr. Sarah Chen",
+        "side": "right"
+    },
+    {
+        "id": 2,
+        "dateLabel": "18 JUL",
+        "title": "WORKSHOP: DATA PIPELINES",
+        "description": "Hands-on session building production-grade data pipelines with Apache Spark and Airflow.",
+        "time": "10:00 AM - 1:00 PM",
+        "location": "Innovation Lab, Tech Center",
+        "speaker": "Emily Rodriguez",
+        "side": "left"
+    },
+    {
+        "id": 3,
+        "dateLabel": "25 JUL",
+        "title": "CREATIVE INDUSTRIES SYMPOSIUM",
+        "description": "Data Engineering at Scale — Exploring how creative industries leverage big data for audience analytics.",
+        "time": "10:00 AM - 4:00 PM",
+        "location": "Innovation Lab, Tech Center",
+        "speaker": "Robert Martinez",
+        "side": "right"
+    },
+    {
+        "id": 4,
+        "dateLabel": "28 JUL",
+        "title": "AI ETHICS ROUNDTABLE",
+        "description": "An open discussion on responsible AI development, bias mitigation, and governance frameworks.",
+        "time": "2:00 PM - 4:00 PM",
+        "location": "Seminar Room B",
+        "speaker": "Dr. Ananya Patel",
+        "side": "left"
+    },
+    {
+        "id": 5,
+        "dateLabel": "01 AUG",
+        "title": "PANEL DISCUSSION",
+        "description": "The Future of Sustainability — Industry leaders debate the role of data science in tackling climate change.",
+        "time": "1:00 PM - 2:00 PM",
+        "location": "Conference Hall A",
+        "speaker": "Peter Jones, Johnson Lee, Mary Lee",
+        "side": "right"
+    },
+    {
+        "id": 6,
+        "dateLabel": "05 AUG",
+        "title": "HACKATHON FINALE",
+        "description": "48-hour hackathon showcase where teams present innovative data-driven solutions to real-world problems.",
+        "time": "6:00 PM - 9:00 PM",
+        "location": "Main Auditorium",
+        "speaker": "All Participants",
+        "side": "left"
+    }
+]
