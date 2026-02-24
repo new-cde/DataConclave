@@ -1,5 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import DayEvents from "./components/DayEvents";
 
 export default function App() {
   const [countdown, setCountdown] = useState({ days: 10, hours: 4, minutes: 34, seconds: 28 });
@@ -28,7 +30,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0e1a] text-white relative overflow-hidden">
+    <div className="min-h-screen bg-[#0a0e1a] text-white relative overflow-hidden scroll-smooth">
       {/* Wavy Pattern Background */}
       <div className="fixed inset-0 pointer-events-none opacity-20">
         <svg className="absolute right-0 top-0 h-full" width="600" viewBox="0 0 600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +55,7 @@ export default function App() {
 
         <div className="hidden lg:flex items-center gap-10 text-sm font-medium text-gray-400">
           <a href="#" className="hover:text-white transition-colors">ABOUT</a>
-          <a href="#" className="hover:text-white transition-colors">EVENT</a>
+          <a href="#events" className="hover:text-white transition-colors">EVENTS</a>
           <a href="#" className="hover:text-white transition-colors">SPEAKER</a>
           <a href="#" className="hover:text-white transition-colors">TICKET</a>
           <a href="#" className="hover:text-white transition-colors">BLOGS</a>
@@ -226,6 +228,9 @@ export default function App() {
           </div>
         </div>
       </section>
+      
+      {/* EVENTS-CARDS SECTION                        */}
+      <DayEvents />
 
       {/* ═══════════════════════════════════════════════ */}
       {/* EVENTS TIMELINE SECTION                        */}
