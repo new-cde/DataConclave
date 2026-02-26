@@ -2,18 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import DayEvents from "./components/DayEvents";
+import Timeline from "./components/Timeline";
 
 export default function App() {
   const [countdown, setCountdown] = useState({ days: 10, hours: 4, minutes: 34, seconds: 28 });
-  const [timelineEvents, setTimelineEvents] = useState([]);
 
-  // Fetch events from JSON
-  useEffect(() => {
-    fetch('/events.json')
-      .then(res => res.json())
-      .then(data => setTimelineEvents(data))
-      .catch(err => console.error('Failed to load events:', err));
-  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -228,206 +221,14 @@ export default function App() {
           </div>
         </div>
       </section>
-      
+
       {/* EVENTS-CARDS SECTION                        */}
       <DayEvents />
 
       {/* ═══════════════════════════════════════════════ */}
       {/* EVENTS TIMELINE SECTION                        */}
       {/* ═══════════════════════════════════════════════ */}
-      <section id="events-timeline" className="relative py-24 px-8 lg:px-16 overflow-hidden">
-        {/* Subtle background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[150px] pointer-events-none"></div>
-
-        <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            className="text-center mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="text-xs tracking-[0.3em] text-purple-400 mb-4 uppercase font-semibold">
-              Our Journey
-            </div>
-            <h2 className="text-4xl lg:text-6xl font-bold">
-              EVENT <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">TIMELINE</span>
-            </h2>
-          </motion.div>
-
-          {/* Timeline Container */}
-          <div className="relative">
-            {/* Central Dashed Line */}
-            <div
-              className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block"
-              style={{
-                backgroundImage: 'repeating-linear-gradient(to bottom, #6366f180 0px, #6366f180 8px, transparent 8px, transparent 20px)',
-              }}
-            ></div>
-            {/* Mobile left line */}
-            <div
-              className="absolute left-6 top-0 bottom-0 w-px md:hidden"
-              style={{
-                backgroundImage: 'repeating-linear-gradient(to bottom, #6366f180 0px, #6366f180 8px, transparent 8px, transparent 20px)',
-              }}
-            ></div>
-
-            {/* Timeline Items */}
-            <div className="space-y-0">
-              {timelineEvents.map((event, index) => {
-                const isLeft = event.side === 'left';
-
-                return (
-                  <div key={event.id} className="relative flex items-start md:items-center min-h-[180px]">
-
-                    {/* ─── DESKTOP LAYOUT ─── */}
-                    <div className="hidden md:grid md:grid-cols-[1fr_auto_1fr] w-full items-center gap-0">
-
-                      {/* LEFT column */}
-                      <div className={`flex ${isLeft ? 'justify-end pr-10' : 'justify-end pr-10'}`}>
-                        {isLeft ? (
-                          <motion.div
-                            className="max-w-sm w-full"
-                            initial={{ opacity: 0, x: -50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.08 }}
-                          >
-                            {/* Title Badge */}
-                            <div className="inline-block px-5 py-2 rounded-md text-sm font-bold tracking-wide text-white mb-3"
-                              style={{ background: 'linear-gradient(135deg, #c0566b 0%, #d4687a 100%)' }}
-                            >
-                              {event.title}
-                            </div>
-                            {/* Description */}
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                              {event.description}
-                            </p>
-                            {/* Meta */}
-                            <div className="flex items-center gap-4 mt-3 text-xs text-gray-500">
-                              <span className="flex items-center gap-1">
-                                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 2.5a1 1 0 011 1V8l2.15 1.29a1 1 0 01-1.03 1.71l-2.62-1.57A1 1 0 017 8.5V4.5a1 1 0 011-1z" /></svg>
-                                {event.time}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M7 8a3 3 0 100-6 3 3 0 000 6zM7 9c-3.314 0-6 1.343-6 3v1h12v-1c0-1.657-2.686-3-6-3z" /></svg>
-                                {event.speaker}
-                              </span>
-                            </div>
-                          </motion.div>
-                        ) : (
-                          <div></div>
-                        )}
-                      </div>
-
-                      {/* CENTER — Dot + Date Label */}
-                      <div className="flex flex-col items-center relative z-10">
-                        {/* Glowing dot */}
-                        <div className="relative">
-                          <div className="w-4 h-4 rounded-full border-2 border-[#c0566b] bg-[#0a0e1a] z-10 relative"></div>
-                          <div className="absolute inset-0 w-4 h-4 rounded-full bg-[#c0566b] blur-md opacity-60"></div>
-                        </div>
-                        {/* Date label */}
-                        <motion.div
-                          className="mt-2 text-xl lg:text-2xl font-bold text-white/90 whitespace-nowrap"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.4, delay: index * 0.08 }}
-                        >
-                          {event.dateLabel}
-                        </motion.div>
-                      </div>
-
-                      {/* RIGHT column */}
-                      <div className={`flex ${!isLeft ? 'justify-start pl-10' : 'justify-start pl-10'}`}>
-                        {!isLeft ? (
-                          <motion.div
-                            className="max-w-sm w-full"
-                            initial={{ opacity: 0, x: 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.08 }}
-                          >
-                            {/* Title Badge */}
-                            <div className="inline-block px-5 py-2 rounded-md text-sm font-bold tracking-wide text-white mb-3"
-                              style={{ background: 'linear-gradient(135deg, #c0566b 0%, #d4687a 100%)' }}
-                            >
-                              {event.title}
-                            </div>
-                            {/* Description */}
-                            <p className="text-gray-400 text-sm leading-relaxed">
-                              {event.description}
-                            </p>
-                            {/* Meta */}
-                            <div className="flex items-center gap-4 mt-3 text-xs text-gray-500">
-                              <span className="flex items-center gap-1">
-                                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 2.5a1 1 0 011 1V8l2.15 1.29a1 1 0 01-1.03 1.71l-2.62-1.57A1 1 0 017 8.5V4.5a1 1 0 011-1z" /></svg>
-                                {event.time}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M7 8a3 3 0 100-6 3 3 0 000 6zM7 9c-3.314 0-6 1.343-6 3v1h12v-1c0-1.657-2.686-3-6-3z" /></svg>
-                                {event.speaker}
-                              </span>
-                            </div>
-                          </motion.div>
-                        ) : (
-                          <div></div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* ─── MOBILE LAYOUT ─── */}
-                    <div className="md:hidden flex items-start w-full">
-                      {/* Dot */}
-                      <div className="flex flex-col items-center mr-6 mt-1 relative z-10 shrink-0" style={{ marginLeft: '16px' }}>
-                        <div className="relative">
-                          <div className="w-4 h-4 rounded-full border-2 border-[#c0566b] bg-[#0a0e1a] z-10 relative"></div>
-                          <div className="absolute inset-0 w-4 h-4 rounded-full bg-[#c0566b] blur-md opacity-60"></div>
-                        </div>
-                      </div>
-                      {/* Card */}
-                      <motion.div
-                        className="flex-1"
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: index * 0.08 }}
-                      >
-                        <div className="text-lg font-bold text-white/90 mb-2">{event.dateLabel}</div>
-                        <div className="inline-block px-4 py-1.5 rounded-md text-xs font-bold tracking-wide text-white mb-2"
-                          style={{ background: 'linear-gradient(135deg, #c0566b 0%, #d4687a 100%)' }}
-                        >
-                          {event.title}
-                        </div>
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                          {event.description}
-                        </p>
-                        <div className="flex flex-wrap items-center gap-3 mt-2 text-xs text-gray-500 mb-8">
-                          <span className="flex items-center gap-1">
-                            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 2.5a1 1 0 011 1V8l2.15 1.29a1 1 0 01-1.03 1.71l-2.62-1.57A1 1 0 017 8.5V4.5a1 1 0 011-1z" /></svg>
-                            {event.time}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M7 8a3 3 0 100-6 3 3 0 000 6zM7 9c-3.314 0-6 1.343-6 3v1h12v-1c0-1.657-2.686-3-6-3z" /></svg>
-                            {event.speaker}
-                          </span>
-                        </div>
-                      </motion.div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Bottom cap */}
-            <div className="hidden md:flex justify-center mt-4">
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-60"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Timeline />
 
       {/* Who We Are Section */}
       <section className="relative py-20 px-8 lg:px-16">
