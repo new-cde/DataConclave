@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import EventDetailCard from "./ui/card";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 /* ─── accent palette per card index ─── */
 const accents = [
@@ -12,7 +11,43 @@ const accents = [
 
 export default function Timeline() {
     const [events, setEvents] = useState([]);
-    const [selectedIdx, setSelectedIdx] = useState(null);
+    const sectionRef = useRef(null);
+    const [scrollBounds, setScrollBounds] = useState({ start: 0, end: 1 });
+    const { scrollY } = useScroll();
+
+    useEffect(() => {
+        const updateBounds = () => {
+            if (!sectionRef.current) return;
+            const rect = sectionRef.current.getBoundingClientRect();
+            const top = rect.top + window.scrollY;
+            const height = rect.height;
+            const centerOffset = window.innerHeight / 2;
+            const start = top - centerOffset;
+            const end = top + height - centerOffset;
+            setScrollBounds({ start, end: end <= start ? start + 1 : end });
+        };
+
+        updateBounds();
+        window.addEventListener("resize", updateBounds);
+        return () => window.removeEventListener("resize", updateBounds);
+    }, [events.length]);
+
+    const centerProgress = useTransform(
+        scrollY,
+        [scrollBounds.start, scrollBounds.end],
+        [0, 1],
+        { clamp: true }
+    );
+    const lineProgress = useSpring(centerProgress, {
+        stiffness: 140,
+        damping: 26,
+        mass: 0.25,
+    });
+    const lineColor = useTransform(
+        centerProgress,
+        [0, 0.5, 1],
+        ["#6366f1", "#a855f7", "#ec4899"]
+    );
 
     useEffect(() => {
         fetch("/events.json")
@@ -23,12 +58,10 @@ export default function Timeline() {
 
     if (events.length === 0) return null;
 
-    const selectedEvent = selectedIdx !== null ? events[selectedIdx] : null;
-    const selectedAccent = selectedIdx !== null ? accents[selectedIdx % accents.length] : null;
-
     return (
         <section
             id="events-timeline"
+            ref={sectionRef}
             className="relative py-28 px-6 lg:px-16 overflow-hidden"
         >
             {/* ── ambient glows ── */}
@@ -44,6 +77,10 @@ export default function Timeline() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
+                    <div className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2">
+                        4 DAYS. 4 EXPERIENCES
+                    </div>
+                    <p className="text-base md:text-lg text-white/70 mb-6">March 10-13, 2026</p>
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/[.06] mb-6">
                         <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
                         <span className="text-[11px] tracking-[0.25em] text-purple-300 uppercase font-semibold">
@@ -71,12 +108,28 @@ export default function Timeline() {
                                 "repeating-linear-gradient(to bottom,rgba(99,102,241,.35) 0px,rgba(99,102,241,.35) 6px,transparent 6px,transparent 18px)",
                         }}
                     />
+                    <motion.div
+                        className="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 hidden md:block origin-top pointer-events-none"
+                        style={{
+                            scaleY: lineProgress,
+                            backgroundColor: lineColor,
+                            boxShadow: "0 0 14px rgba(236,72,153,0.38)",
+                        }}
+                    />
                     {/* Vertical dashed line — mobile left */}
                     <div
                         className="absolute left-5 top-0 bottom-0 w-px md:hidden"
                         style={{
                             backgroundImage:
                                 "repeating-linear-gradient(to bottom,rgba(99,102,241,.35) 0px,rgba(99,102,241,.35) 6px,transparent 6px,transparent 18px)",
+                        }}
+                    />
+                    <motion.div
+                        className="absolute left-5 top-0 bottom-0 w-[2px] md:hidden origin-top pointer-events-none"
+                        style={{
+                            scaleY: lineProgress,
+                            backgroundColor: lineColor,
+                            boxShadow: "0 0 12px rgba(236,72,153,0.36)",
                         }}
                     />
 
@@ -101,7 +154,6 @@ export default function Timeline() {
                                                     index={index}
                                                     accent={accent}
                                                     animateFrom="left"
-                                                    onClick={() => setSelectedIdx(index)}
                                                 />
                                             ) : (
                                                 <div />
@@ -110,27 +162,12 @@ export default function Timeline() {
 
                                         {/* CENTER dot */}
                                         <div className="flex flex-col items-center relative z-10">
-                                            <motion.div
-                                                className="relative"
-                                                initial={{ scale: 0 }}
-                                                whileInView={{ scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{
-                                                    type: "spring",
-                                                    stiffness: 300,
-                                                    damping: 20,
-                                                    delay: index * 0.1,
-                                                }}
-                                            >
-                                                <div
-                                                    className="w-5 h-5 rounded-full border-[2.5px] bg-[#0a0e1a] z-10 relative"
-                                                    style={{ borderColor: accent.from }}
-                                                />
-                                                <div
-                                                    className="absolute -inset-1 rounded-full blur-md opacity-50"
-                                                    style={{ background: accent.from }}
-                                                />
-                                            </motion.div>
+                                            <TimelineNode
+                                                index={index}
+                                                total={events.length}
+                                                accent={accent}
+                                                progress={centerProgress}
+                                            />
                                         </div>
 
                                         {/* RIGHT side */}
@@ -141,7 +178,6 @@ export default function Timeline() {
                                                     index={index}
                                                     accent={accent}
                                                     animateFrom="right"
-                                                    onClick={() => setSelectedIdx(index)}
                                                 />
                                             ) : (
                                                 <div />
@@ -155,27 +191,13 @@ export default function Timeline() {
                                             className="flex flex-col items-center mr-5 mt-2 relative z-10 shrink-0"
                                             style={{ marginLeft: "12px" }}
                                         >
-                                            <motion.div
-                                                className="relative"
-                                                initial={{ scale: 0 }}
-                                                whileInView={{ scale: 1 }}
-                                                viewport={{ once: true }}
-                                                transition={{
-                                                    type: "spring",
-                                                    stiffness: 300,
-                                                    damping: 20,
-                                                    delay: index * 0.1,
-                                                }}
-                                            >
-                                                <div
-                                                    className="w-4 h-4 rounded-full border-2 bg-[#0a0e1a] z-10 relative"
-                                                    style={{ borderColor: accent.from }}
-                                                />
-                                                <div
-                                                    className="absolute -inset-1 rounded-full blur-md opacity-50"
-                                                    style={{ background: accent.from }}
-                                                />
-                                            </motion.div>
+                                            <TimelineNode
+                                                index={index}
+                                                total={events.length}
+                                                accent={accent}
+                                                progress={centerProgress}
+                                                mobile
+                                            />
                                         </div>
 
                                         <TimelineBubbleCard
@@ -184,7 +206,6 @@ export default function Timeline() {
                                             accent={accent}
                                             animateFrom="right"
                                             mobile
-                                            onClick={() => setSelectedIdx(index)}
                                         />
                                     </div>
                                 </div>
@@ -198,23 +219,59 @@ export default function Timeline() {
                     </div>
                 </div>
             </div>
-
-            {/* ── Popup Detail Card ── */}
-            <AnimatePresence>
-                {selectedEvent && (
-                    <EventDetailCard
-                        event={selectedEvent}
-                        accent={selectedAccent}
-                        onClose={() => setSelectedIdx(null)}
-                    />
-                )}
-            </AnimatePresence>
         </section>
     );
 }
 
+function TimelineNode({ index, total, accent, progress, mobile = false }) {
+    const threshold = total > 1 ? index / (total - 1) : 1;
+    const nodeFill = useTransform(
+        progress,
+        [Math.max(0, threshold - 0.08), threshold],
+        ["#0a0e1a", accent.from]
+    );
+    const nodeScale = useTransform(
+        progress,
+        [Math.max(0, threshold - 0.06), threshold],
+        [1, 1.08]
+    );
+    const glowOpacity = useTransform(
+        progress,
+        [Math.max(0, threshold - 0.08), threshold],
+        [0.25, 0.75]
+    );
+
+    return (
+        <motion.div
+            className="relative"
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+                delay: index * 0.1,
+            }}
+            style={{ scale: nodeScale }}
+        >
+            <motion.div
+                className={`${mobile ? "w-4 h-4 border-2" : "w-5 h-5 border-[2.5px]"} rounded-full z-10 relative`}
+                style={{
+                    borderColor: accent.from,
+                    backgroundColor: nodeFill,
+                }}
+            />
+            <motion.div
+                className="absolute -inset-1 rounded-full blur-md"
+                style={{ background: accent.from, opacity: glowOpacity }}
+            />
+        </motion.div>
+    );
+}
+
 /* ══════════════════════════════════════════════════
-   Glassmorphic Bubble Card — glow on hover, click to open popup
+   Glassmorphic Bubble Card with hover side detail panel
    ══════════════════════════════════════════════════ */
 function TimelineBubbleCard({
     event,
@@ -222,21 +279,20 @@ function TimelineBubbleCard({
     accent,
     animateFrom,
     mobile = false,
-    onClick,
 }) {
     const [hovered, setHovered] = useState(false);
     const xOffset = animateFrom === "left" ? -60 : 60;
+    const isLeftCard = event.side === "left";
 
     return (
         <motion.div
-            className={`${mobile ? "flex-1 mb-4" : "max-w-md w-full"} cursor-pointer`}
+            className={`${mobile ? "flex-1 mb-4" : "max-w-md w-full"} relative overflow-visible`}
             initial={{ opacity: 0, x: xOffset }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: index * 0.1, ease: "easeOut" }}
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
-            onClick={onClick}
         >
             <motion.div
                 className="relative rounded-2xl p-[1px] overflow-hidden"
@@ -385,7 +441,17 @@ function TimelineBubbleCard({
                             </div>
                         </div>
 
-                        {/* ── Click hint ── */}
+                        {mobile && (
+                            <div className="mt-4 rounded-lg border border-white/[.06] bg-white/[.03] px-3 py-2.5">
+                                <div className="text-[10px] uppercase tracking-widest text-white/35 font-semibold mb-1.5">
+                                    Description
+                                </div>
+                                <p className="text-[11px] text-white/60 leading-relaxed">
+                                    {event.description}
+                                </p>
+                            </div>
+                        )}
+
                         <motion.div
                             className="flex items-center justify-center gap-1.5 mt-4 pt-3"
                             style={{
@@ -394,22 +460,15 @@ function TimelineBubbleCard({
                             animate={{ opacity: hovered ? 1 : 0.4 }}
                             transition={{ duration: 0.25 }}
                         >
-                            <span className="text-[10px] tracking-wider uppercase font-semibold text-white/30">
-                                Click to view details
-                            </span>
-                            <svg
-                                width="10"
-                                height="10"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                className="text-white/30"
+                            <button
+                                className="w-full rounded-lg px-4 py-2.5 text-sm font-semibold text-white"
+                                style={{
+                                    background: `linear-gradient(135deg, ${accent.from}, ${accent.to})`,
+                                    boxShadow: `0 8px 24px ${accent.glow}`,
+                                }}
                             >
-                                <polyline points="9 18 15 12 9 6" />
-                            </svg>
+                                Register
+                            </button>
                         </motion.div>
                     </div>
 
@@ -422,6 +481,40 @@ function TimelineBubbleCard({
                     />
                 </motion.div>
             </motion.div>
+
+            {!mobile && (
+                <motion.div
+                    className={`hidden md:block absolute top-0 z-20 h-full w-full pointer-events-none ${isLeftCard ? "left-full ml-4" : "right-full mr-4"}`}
+                    initial={false}
+                    animate={{
+                        opacity: hovered ? 1 : 0,
+                        x: hovered ? 0 : isLeftCard ? -20 : 20,
+                    }}
+                    transition={{ duration: 0.24, ease: "easeOut" }}
+                >
+                    <div className="h-full rounded-2xl border border-white/10 bg-[#0b1020]/95 p-6 backdrop-blur-xl shadow-2xl">
+                        <div className="text-[10px] uppercase tracking-[0.2em] text-white/40 font-semibold mb-2">
+                            Description
+                        </div>
+                        <p className="text-sm text-white/70 leading-relaxed">
+                            {event.description}
+                        </p>
+                        {event.flow && event.flow.length > 0 && (
+                            <ul className="mt-4 space-y-2 text-xs text-white/60">
+                                {event.flow.slice(0, 3).map((step, idx) => (
+                                    <li key={idx} className="flex items-start gap-2">
+                                        <span
+                                            className="mt-[2px] inline-block h-1.5 w-1.5 rounded-full"
+                                            style={{ background: accent.from }}
+                                        />
+                                        <span>{step}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                </motion.div>
+            )}
         </motion.div>
     );
 }

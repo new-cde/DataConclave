@@ -1,11 +1,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import DayEvents from "./components/DayEvents";
 import Timeline from "./components/Timeline";
 
 export default function App() {
   const [countdown, setCountdown] = useState({ days: 10, hours: 4, minutes: 34, seconds: 28 });
+  const throwbackImages = [
+    "/dc25/DC251.jpeg",
+    "/dc25/DC252.jpeg",
+    "/dc25/DC253.jpeg",
+    "/dc25/DC254.jpeg",
+    "/dc25/DC255.jpeg",
+  ];
 
 
   useEffect(() => {
@@ -23,7 +29,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0e1a] text-white relative overflow-hidden scroll-smooth">
+    <div className="min-h-screen bg-[#0a0e1a] text-white relative overflow-hidden scroll-smooth pt-24">
       {/* Wavy Pattern Background */}
       <div className="fixed inset-0 pointer-events-none opacity-20">
         <svg className="absolute right-0 top-0 h-full" width="600" viewBox="0 0 600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,7 +44,7 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-50 px-8 lg:px-16 py-6 flex items-center justify-between">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-8 lg:px-16 py-6 flex items-center justify-between backdrop-blur-md bg-[#0a0e1a]/70 border-b border-white/10">
         <div className="flex items-center gap-3">
           <div className="text-2xl font-bold tracking-tight flex items-center gap-2">
             DATA CONCLAVE
@@ -48,14 +54,14 @@ export default function App() {
 
         <div className="hidden lg:flex items-center gap-10 text-sm font-medium text-gray-400">
           <a href="#" className="hover:text-white transition-colors">ABOUT</a>
-          <a href="#events" className="hover:text-white transition-colors">EVENTS</a>
-          <a href="#" className="hover:text-white transition-colors">SPEAKER</a>
-          <a href="#" className="hover:text-white transition-colors">TICKET</a>
-          <a href="#" className="hover:text-white transition-colors">BLOGS</a>
+          <a href="#events-timeline" className="hover:text-white transition-colors">EVENTS</a>
+          <a href="#speakers" className="hover:text-white transition-colors">SPEAKER</a>
+          <a href="#sponsors" className="hover:text-white transition-colors">SPONSORS</a>
+          <a href="#throwback" className="hover:text-white transition-colors">DC'25</a>
         </div>
 
         <button className="px-8 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-sm font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all">
-          CONTACT
+          REGISTER
         </button>
       </nav>
 
@@ -83,57 +89,46 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0a0e1a]/60 to-[#0a0e1a]"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-16 w-full grid lg:grid-cols-2 gap-12 items-center">
-          <div className="lg:col-start-2">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="text-xs lg:text-sm tracking-[0.2em] text-purple-400 mb-6 font-semibold uppercase">
-                9 JUNE 2023 • LIMITED SEAT
+        <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-16 w-full">
+          <motion.div
+            className="max-w-4xl"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-16 h-16 rounded-full p-[3px] bg-gradient-to-br from-indigo-400 to-purple-500 shadow-[0_10px_28px_rgba(99,102,241,0.35)]">
+                <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
+                  <img
+                    src="/dsc-logo.jpeg"
+                    alt="Data Science Club Logo"
+                    className="w-[74%] h-[74%] object-contain"
+                  />
+                </div>
               </div>
-
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
-                The Ultimate Platform for Planning and Promoting Successful Events
-              </h1>
-
-              <p className="text-gray-400 leading-relaxed mb-8 max-w-xl">
-                Data Conclave is a leading event and conference platform organized by Data Science Club and DSBS Student Association that brings together industry experts, thought leaders, and enthusiasts to share knowledge and insights.
-              </p>
-
-              <button className="flex items-center gap-2 text-sm font-medium hover:gap-4 transition-all">
-                See more about us
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M8 3L8 13M8 13L13 8M8 13L3 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </button>
-
-              <div className="flex gap-4 mt-8">
-                {['f', 't', 'in', 'ig'].map((icon) => (
-                  <a key={icon} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all text-sm">
-                    {icon}
-                  </a>
-                ))}
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.2em] text-purple-300 font-semibold">
+                  Data Science Club Presents
+                </p>
+                <p className="text-sm text-white/60">Department of Data Science and Business Systems</p>
               </div>
-            </motion.div>
-          </div>
+            </div>
 
-          {/* Featured Event Card on Left */}
-          <div className="lg:col-start-1 lg:row-start-1">
-            <motion.div
-              className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 max-w-md"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <div className="text-xs text-gray-400 mb-2">9 JUNE 2023 • LIMITED SEAT</div>
-              <h3 className="text-2xl font-bold mb-4">Get Inside in The Philosopher's Mind</h3>
-              <button className="px-6 py-3 rounded-full border border-white/30 text-sm font-medium hover:bg-white/10 transition-all">
-                BUY TICKETS
-              </button>
-            </motion.div>
-          </div>
+            <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
+              The Ultimate Platform for Planning and Promoting Successful Events
+            </h1>
+
+            <p className="text-gray-300 leading-relaxed mb-8 max-w-2xl">
+              Data Conclave brings together industry experts, thought leaders, and enthusiasts to share knowledge, insights, and practical experience in Data Science and AI.
+            </p>
+
+            <button className="flex items-center gap-2 text-sm font-medium hover:gap-4 transition-all">
+              See more about us
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 3L8 13M8 13L13 8M8 13L3 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </motion.div>
         </div>
       </section>
 
@@ -222,49 +217,133 @@ export default function App() {
         </div>
       </section>
 
-      {/* EVENTS-CARDS SECTION                        */}
-      <DayEvents />
-
       {/* ═══════════════════════════════════════════════ */}
       {/* EVENTS TIMELINE SECTION                        */}
       {/* ═══════════════════════════════════════════════ */}
       <Timeline />
 
-      {/* Who We Are Section */}
-      <section className="relative py-20 px-8 lg:px-16">
+      {/* Speakers Section */}
+      <section id="speakers" className="relative py-24 px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-8">WHO WE ARE</h2>
-              <p className="text-gray-400 leading-relaxed mb-8">
-                Data Conclave is a comprehensive platform for organizing and promoting data science events, conferences, and other industry-related gatherings. Organized by Data Science Club and DSBS Student Association, our team of experienced professionals is dedicated to providing unparalleled event management services that help you streamline your event planning process and maximize your ROI.
-              </p>
-              <button className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-semibold hover:from-purple-500 hover:to-indigo-500 transition-all">
-                CONTACT
-              </button>
-            </div>
+          <div className="text-center mb-12">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
+              Featured Speakers
+            </p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-3">Meet Our Speakers</h2>
+            <p className="text-white/60 max-w-2xl mx-auto">
+              Lineup to be finalized. These are placeholder profiles for layout preview.
+            </p>
+          </div>
 
-            <div>
-              <h3 className="text-2xl font-bold mb-8">Benefits of Choosing Data Conclave</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: "🌐", title: "Global Network", desc: "Connect with data professionals worldwide" },
-                  { icon: "🔧", title: "Advanced Tools", desc: "Cutting-edge ML/AI platforms" },
-                  { icon: "🎨", title: "Customizable Pages", desc: "Tailored event experiences" },
-                  { icon: "📢", title: "Powerful Marketing", desc: "Reach your target audience" }
-                ].map((benefit, i) => (
-                  <div
-                    key={i}
-                    className="backdrop-blur-md bg-gradient-to-br from-purple-500/10 to-indigo-500/10 border border-white/10 rounded-2xl p-6 text-center hover:from-purple-500/20 hover:to-indigo-500/20 transition-all"
-                  >
-                    <div className="text-4xl mb-3">{benefit.icon}</div>
-                    <div className="font-semibold mb-2">{benefit.title}</div>
-                    <div className="text-xs text-gray-400">{benefit.desc}</div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: "Dr. Placeholder One", role: "AI Research Lead", topic: "Future of Applied AI", logo: "/dsc-logo.jpeg" },
+              { name: "Ms. Sample Two", role: "Senior Data Scientist", topic: "ML in Production", logo: "/vite.svg" },
+              { name: "Mr. Demo Three", role: "Analytics Consultant", topic: "Data Storytelling", logo: "/dsc-logo.jpeg" },
+              { name: "Prof. Mock Four", role: "Academic Expert", topic: "Responsible AI Systems", logo: "/vite.svg" },
+            ].map((speaker, idx) => (
+              <motion.div
+                key={speaker.name}
+                className="rounded-2xl border border-white/10 bg-white/[.04] backdrop-blur-xl p-5 hover:bg-white/[.06] transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.08 }}
+              >
+                <div className="w-16 h-16 rounded-full p-[3px] bg-gradient-to-br from-indigo-400 to-purple-500 mb-4">
+                  <div className="w-full h-full rounded-full bg-white overflow-hidden flex items-center justify-center">
+                    <img src={speaker.logo} alt={speaker.name} className="w-[72%] h-[72%] object-contain" />
                   </div>
-                ))}
-              </div>
+                </div>
+                <h3 className="text-lg font-semibold leading-tight mb-1">{speaker.name}</h3>
+                <p className="text-sm text-purple-300 mb-3">{speaker.role}</p>
+                <div className="inline-flex items-center rounded-full border border-white/15 px-3 py-1 text-[11px] text-white/70">
+                  {speaker.topic}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section id="sponsors" className="relative py-20 px-8 lg:px-16">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
+              Our Sponsors
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-2">Powered By Supporters</h2>
+            <p className="text-white/60">Placeholder sponsor slots. Final logos can be replaced anytime.</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: "Title Sponsor", logo: "/dsc-logo.jpeg" },
+              { name: "Tech Partner", logo: "/vite.svg" },
+              { name: "Community Partner", logo: "/dsc-logo.jpeg" },
+            ].map((sponsor, idx) => (
+              <motion.div
+                key={sponsor.name}
+                className="rounded-2xl border border-white/10 bg-white/[.04] backdrop-blur-xl p-6 flex flex-col items-center text-center"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+              >
+                <div className="w-20 h-20 rounded-xl bg-white p-3 mb-4 flex items-center justify-center">
+                  <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain" />
+                </div>
+                <p className="text-sm text-white/80 font-medium">{sponsor.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Throwback Section */}
+      <section id="throwback" className="relative py-24 px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
+              DC'25
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-2">DC'25</h2>
+            <p className="text-white/60">Throwback highlights from DataConclave 2025.</p>
+          </div>
+
+          <div className="relative overflow-hidden py-2">
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-[#0a0e1a] to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-[#0a0e1a] to-transparent" />
+
+            <div className="dc25-track flex gap-5 w-max">
+              {[...throwbackImages, ...throwbackImages].map((src, idx) => (
+                <div
+                  key={`${src}-${idx}`}
+                  className="shrink-0 w-[340px] sm:w-[440px] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[.08] to-white/[.03] p-2"
+                >
+                  <img
+                    src={src}
+                    alt={`DC25 throwback ${idx + 1}`}
+                    className="w-full h-64 sm:h-80 rounded-xl object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Who We Are Section */}
+      <section className="relative py-20 px-8 lg:px-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-8">WHO WE ARE</h2>
+          <p className="text-gray-400 leading-relaxed mb-8">
+            Data Conclave is a comprehensive platform for organizing and promoting data science events, conferences, and other industry-related gatherings. Organized by Data Science Club and DSBS Student Association, our team of experienced professionals is dedicated to providing unparalleled event management services that help you streamline your event planning process and maximize your ROI.
+          </p>
+          <button className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-semibold hover:from-purple-500 hover:to-indigo-500 transition-all">
+            CONTACT
+          </button>
         </div>
       </section>
 
@@ -278,18 +357,6 @@ export default function App() {
 
           <div className="text-sm text-gray-500">
             © 2025 Data Conclave. Organized by Data Science Club & DSBS Student Association
-          </div>
-
-          <div className="flex gap-3">
-            {['f', 't', 'in', 'ig'].map((social) => (
-              <a
-                key={social}
-                href="#"
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-all text-xs"
-              >
-                {social}
-              </a>
-            ))}
           </div>
         </div>
       </footer>
