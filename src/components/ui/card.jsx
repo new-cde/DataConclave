@@ -107,7 +107,7 @@ export default function EventDetailCard({ event, accent, onClose }) {
                                         </svg>
                                         {event.day}
                                     </span>
-                                    <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide text-white/60 border border-white/10 bg-white/[.04]">
+                                    <span className="inline-flex items-center px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide text-white/60 border border-white/10 bg-white/5">
                                         {event.date}
                                     </span>
                                 </div>
@@ -136,7 +136,7 @@ export default function EventDetailCard({ event, accent, onClose }) {
                                 </div>
 
                                 {/* ── Theme ── */}
-                                <div className="flex items-start gap-2.5 px-4 py-3 rounded-xl bg-white/[.04] border border-white/[.06] mb-6">
+                                <div className="flex items-start gap-2.5 px-4 py-3 rounded-xl bg-white/5 border border-white/[.06] mb-6">
                                     <svg
                                         width="15"
                                         height="15"
@@ -146,7 +146,7 @@ export default function EventDetailCard({ event, accent, onClose }) {
                                         strokeWidth="2"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
-                                        className="text-purple-400 shrink-0 mt-0.5"
+                                        className="text-primary shrink-0 mt-0.5"
                                     >
                                         <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
                                         <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
@@ -169,7 +169,7 @@ export default function EventDetailCard({ event, accent, onClose }) {
                                     <InfoBubble
                                         label="Time"
                                         value={event.time}
-                                        iconColor="text-indigo-400"
+                                        iconColor="text-primaryDark"
                                         icon={
                                             <>
                                                 <circle cx="12" cy="12" r="10" />
@@ -180,7 +180,7 @@ export default function EventDetailCard({ event, accent, onClose }) {
                                     <InfoBubble
                                         label="Duration"
                                         value={event.duration}
-                                        iconColor="text-amber-400"
+                                        iconColor="text-primary"
                                         icon={
                                             <>
                                                 <path d="M5 22h14" />
@@ -193,7 +193,7 @@ export default function EventDetailCard({ event, accent, onClose }) {
                                     <InfoBubble
                                         label="Mode"
                                         value={event.mode}
-                                        iconColor="text-cyan-400"
+                                        iconColor="text-primary"
                                         icon={
                                             <>
                                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
@@ -204,7 +204,7 @@ export default function EventDetailCard({ event, accent, onClose }) {
                                     <InfoBubble
                                         label="Speaker"
                                         value={event.speaker}
-                                        iconColor="text-purple-400"
+                                        iconColor="text-primary"
                                         icon={
                                             <>
                                                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />

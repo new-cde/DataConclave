@@ -16,6 +16,7 @@ const NAV_SECTIONS = [
 export default function App() {
   // Active section for navbar highlight
   const [activeSection, setActiveSection] = useState('about');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const sectionRefs = useRef({});
 
   // Countdown to March 11, 2026
@@ -94,9 +95,8 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0e1a] text-white relative overflow-hidden scroll-smooth pt-24">
-      {/* Wavy Pattern Background */}
-      <div className="fixed inset-0 pointer-events-none opacity-20">
+    <div className="min-h-screen text-white relative scroll-smooth
+bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]">  <div className="absolute inset-0 pointer-events-none opacity-10">
         <svg className="absolute right-0 top-0 h-full" width="600" viewBox="0 0 600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M600 0C600 0 500 100 500 200C500 300 600 400 600 500C600 600 500 700 500 800C500 900 600 1000 600 1100V1200H600V0Z" fill="url(#wave-gradient)" fillOpacity="0.1" />
           <defs>
@@ -109,14 +109,15 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-16 py-4 lg:py-6 flex items-center justify-between backdrop-blur-md bg-[#0a0e1a]/70 border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-16 py-4 lg:py-6 flex items-center justify-between backdrop-blur-md bg-slate-900/20 border-b border-white/10">
         <div className="flex items-center gap-3">
           <div className="text-xl lg:text-2xl font-bold tracking-tight flex items-center gap-2">
             DATA CONCLAVE
-            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617]"></div>
           </div>
         </div>
 
+        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-10 text-sm font-medium">
           {NAV_SECTIONS.map(({ id, label, href }) => (
             <a
@@ -146,7 +147,7 @@ export default function App() {
               {activeSection === id && (
                 <span
                   className="absolute left-0 right-0 -bottom-1 h-[3px] rounded-full
-             bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-400
+             bg-gradient-to-r from-white/60 via-white to-white/60
              origin-left will-change-transform"
                   style={{
                     transform: activeSection === id ? 'scaleX(1)' : 'scaleX(0)',
@@ -161,23 +162,104 @@ export default function App() {
           ))}
         </div>
 
+        {/* Mobile Menu Button */}
+        <button 
+          className="lg:hidden p-2 text-white"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          )}
+        </button>
+
+        {/* Desktop Register Button */}
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
           target="_blank"
           rel="noopener noreferrer"
+          className="hidden lg:inline-block"
         >
-          <button className="px-5 lg:px-8 py-2.5 lg:py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-xs lg:text-sm font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all">
+          <button className="px-5 lg:px-8 py-2.5 lg:py-3 rounded-full bg-gradient-to-r from--[#00C2FF] to-[#2563EB]
+  text-xs lg:text-sm font-semibold
+  shadow-lg shadow-cyan-500/20
+  hover:shadow-primary/40
+  hover:scale-105
+  transition-all duration-300">
             REGISTER
           </button>
         </a>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-40 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-xl" />
+            <div className="relative z-10 flex flex-col items-center justify-center h-full gap-8">
+              {NAV_SECTIONS.map(({ id, label, href }, idx) => (
+                <motion.a
+                  key={id}
+                  href={href}
+                  className={`text-2xl font-semibold ${
+                    activeSection === id ? 'text-white' : 'text-gray-400'
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ delay: idx * 0.1 }}
+                  onClick={e => {
+                    const el = document.getElementById(id);
+                    if (el) {
+                      e.preventDefault();
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      window.history.replaceState(null, '', href);
+                    }
+                    setMobileMenuOpen(false);
+                  }}
+                >
+                  {label}
+                </motion.a>
+              ))}
+              <motion.a
+                href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 px-8 py-3 rounded-full bg-primary-gradient
+                text-xs lg:text-sm font-semibold
+                shadow-lg shadow-cyan-500/20
+                hover:shadow-primary/40
+                hover:scale-105
+                transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ delay: NAV_SECTIONS.length * 0.1 }}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                REGISTER
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+
       {/* Hero Section with Photo Overlay */}
-      <section id="about" className="relative min-h-screen flex items-center 
-    bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617] overflow-hidden pt-24 lg:pt-0">
-
+      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-24 lg:pt-0">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 w-full 
-    grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center py-12 lg:py-0">
-
+          grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center py-12 lg:py-0">
           {/* LEFT — TEXT */}
           <div className="text-center lg:text-left">
 
@@ -186,9 +268,6 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9 }}
             >
-
-
-
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6
           bg-gradient-to-r from-[#00C2FF] via-white to-[#2563EB]
           bg-clip-text text-transparent">
@@ -199,7 +278,7 @@ export default function App() {
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-              <p className="text-sm tracking-wide text-[#00C2FF] mb-4">
+              <p className="text-sm tracking-wide text-primary mb-4">
                 11 – 13 MARCH 2026
               </p>
               <div className="flex justify-center lg:justify-start items-center">
@@ -211,7 +290,7 @@ export default function App() {
              bg-gradient-to-r from-[#00C2FF] to-[#2563EB]
              font-semibold tracking-wide
              shadow-lg shadow-cyan-500/20
-             hover:shadow-cyan-500/40
+             hover:shadow-primary/40
              hover:scale-105
              transition-all duration-300"
                 >
@@ -223,44 +302,31 @@ export default function App() {
           </div>
 
           {/* RIGHT — RING (Centered Cleanly) */}
-          <div className="flex justify-center items-center order-first lg:order-last">
-            <div className="w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[500px] h-[320px] sm:h-[400px] lg:h-[500px]">
+          <div className="relative flex justify-center items-center order-first lg:order-last">
+            <div className="relative w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[460px] aspect-square lg:-translate-x-12">
               <NeuralRing />
             </div>
           </div>
         </div>
         {/* Soft glow behind ring */}
-        <div className="absolute right-[20%] top-1/2 -translate-y-1/2
+        <div className="absolute right-[30%] top-1/4 -translate-y-1/2
     w-[500px] h-[500px] rounded-full
     bg-[#00C2FF]/10 blur-3xl invisible lg:visible" />
-
-        <div className="absolute bottom-0 left-0 right-0 h-40 
-bg-gradient-to-b from-transparent to-[#05080F]" />
       </section>
       {/* Countdown Section with Photo Background */}
-      <section className="bg-[#05080F] border-t border-white/5 py-24">
+      <section className="relative py-24 px-8 lg:px-16">
         {/* Background Photo */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900">
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,194,255,0.06),transparent_70%)]"/>
             <svg width="100%" height="100%" viewBox="0 0 1920 600" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
-
                 <linearGradient id="person-bg" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" stopColor="#374151" />
                   <stop offset="100%" stopColor="#1f2937" />
                 </linearGradient>
               </defs>
-              <ellipse cx="960" cy="200" rx="180" ry="200" fill="url(#person-bg)" opacity="0.4" />
-              <rect x="780" y="380" width="360" height="220" rx="30" fill="url(#person-bg)" opacity="0.3" />
-              <circle cx="860" cy="260" r="25" fill="#4b5563" opacity="0.6" />
-              <rect x="1050" y="320" width="80" height="120" rx="40" fill="#374151" opacity="0.5" />
             </svg>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e1a] via-[#0a0e1a]/60 to-transparent"></div>
-        </div>
-
         <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-16 text-center">
-          <div className="text-xs tracking-[0.2em] text-purple-400 mb-4 uppercase font-semibold">
+          <div className="text-xs tracking-[0.2em] text-primary/80 mb-4 uppercase font-semibold">
             The Ultimate Platform for Unforgettable Events
           </div>
 
@@ -273,7 +339,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
           </p>
 
           {/* Countdown Boxes */}
-          <div className="flex justify-center gap-4 lg:gap-6 mb-16">
+          <div className="flex justify-center gap-2 sm:gap-3 lg:gap-6 mb-16 px-2 sm:px-0 overflow-x-auto">
             {[
               [countdown.days, "DAYS"],
               [countdown.hours, "HOURS"],
@@ -284,23 +350,13 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
               return (
                 <motion.div
                   key={unit}
-                  className="backdrop-blur-md bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 rounded-2xl p-3 lg:p-6 min-w-[90px] min-h-[90px] lg:min-w-[130px] lg:min-h-[130px] flex flex-col items-center"
+                  className="backdrop-blur-md bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 rounded-2xl p-2 sm:p-3 lg:p-6 min-w-[60px] sm:min-w-[80px] lg:min-w-[130px] min-h-[60px] sm:min-h-[80px] lg:min-h-[130px] flex flex-col items-center shrink-0"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   style={{ boxSizing: 'border-box' }}
                 >
                   <div
-                    className="relative w-full h-full flex items-center justify-center mb-2"
-                    style={{
-                      perspective: '1000px',
-                      minHeight: '3.2rem',
-                      minWidth: '3.2rem',
-                      maxWidth: '4.5rem',
-                      maxHeight: '4.5rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
+                    className="relative flex items-center justify-center mb-1 sm:mb-2"
                   >
                     <AnimatePresence mode="wait" initial={false}>
                       <motion.span
@@ -309,37 +365,14 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                         animate={{ rotateX: 0, opacity: 1, zIndex: 2 }}
                         exit={{ rotateX: -90, opacity: 0, zIndex: 1 }}
                         transition={{ duration: 0.6, ease: 'easeInOut' }}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          width: '100%',
-                          height: '3.2rem',
-                          minHeight: '3.2rem',
-                          minWidth: '3.2rem',
-                          maxWidth: '4.5rem',
-                          maxHeight: '4.5rem',
-                          fontVariantNumeric: 'tabular-nums',
-                          fontWeight: 700,
-                          fontSize: '3rem',
-                          lineHeight: 1.1,
-                          textAlign: 'center',
-                          background: 'rgba(30, 27, 75, 0.18)',
-                          borderRadius: '0.7em',
-                          boxShadow: '0 2px 12px 0 rgba(80,80,120,0.13)',
-                          willChange: 'transform, opacity',
-                          backfaceVisibility: 'hidden',
-                          transformStyle: 'preserve-3d',
-                          position: 'absolute',
-                          color: 'white',
-                          userSelect: 'none',
-                        }}
+                        className="text-xl sm:text-2xl lg:text-4xl font-bold text-white"
+                        style={{ fontVariantNumeric: 'tabular-nums', userSelect: 'none' }}
                       >
                         {formatted}
                       </motion.span>
                     </AnimatePresence>
                   </div>
-                  <div className="text-[11px] lg:text-xs tracking-wider text-gray-400 mt-1">{unit}</div>
+                  <div className="text-[9px] sm:text-[11px] lg:text-xs tracking-wider text-gray-400">{unit}</div>
                 </motion.div>
               );
             })}
@@ -389,7 +422,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
             ].map((speaker, idx) => (
               <motion.div
                 key={speaker.name}
-                className="rounded-2xl border border-white/10 bg-white/[.04] backdrop-blur-xl p-5 hover:bg-white/[.06] transition-all"
+                className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 hover:bg-white/[.06] transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -430,7 +463,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
             ].map((sponsor, idx) => (
               <motion.div
                 key={sponsor.name}
-                className="rounded-2xl border border-white/10 bg-white/[.04] backdrop-blur-xl p-6 flex flex-col items-center text-center"
+                className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 flex flex-col items-center text-center"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -514,7 +547,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                     whileHover={{ scale: 1.13 }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-purple-400">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-primary">
                       <rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" strokeWidth="1.5" />
                       <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5" />
                       <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
@@ -533,7 +566,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="w-5 h-5 text-indigo-400"
+                      className="w-5 h-5 text-primaryDark"
                       aria-hidden="true"
                     >
                       <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.7c0-1.83-.03-4.18-2.55-4.18-2.55 0-2.94 1.99-2.94 4.05V24h-4V8z" />
@@ -554,7 +587,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                     whileHover={{ scale: 1.13 }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-purple-400">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-primary">
                       <rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" strokeWidth="1.5" />
                       <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5" />
                       <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
@@ -573,7 +606,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       fill="currentColor"
-                      className="w-5 h-5 text-indigo-400"
+                      className="w-5 h-5 text-primaryDark"
                       aria-hidden="true"
                     >
                       <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.7c0-1.83-.03-4.18-2.55-4.18-2.55 0-2.94 1.99-2.94 4.05V24h-4V8z" />

@@ -349,7 +349,7 @@ function TimelineBubbleCard({
                                 {event.day}
                             </span>
 
-                            <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold tracking-wide text-white/60 border border-white/10 bg-white/[.04]">
+                            <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-semibold tracking-wide text-white/60 border border-white/10 bg-white/5">
                                 {event.date}
                             </span>
                         </div>
@@ -378,7 +378,7 @@ function TimelineBubbleCard({
                         </div>
 
                         {/* ── Row 3: Theme ── */}
-                        <div className="flex items-start gap-2 px-3.5 py-2.5 rounded-xl bg-white/[.04] border border-white/[.06] mb-4">
+                        <div className="flex items-start gap-2 px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/[.06] mb-4">
                             <svg
                                 width="14"
                                 height="14"
@@ -388,7 +388,7 @@ function TimelineBubbleCard({
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-purple-400 shrink-0 mt-0.5"
+                                className="text-primary shrink-0 mt-0.5"
                             >
                                 <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
                                 <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
@@ -410,7 +410,7 @@ function TimelineBubbleCard({
                                     strokeWidth="2.5"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="text-indigo-400 shrink-0"
+                                    className="text-primaryDark shrink-0"
                                 >
                                     <circle cx="12" cy="12" r="10" />
                                     <polyline points="12 6 12 12 16 14" />
@@ -430,7 +430,7 @@ function TimelineBubbleCard({
                                     strokeWidth="2.5"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="text-purple-400 shrink-0"
+                                    className="text-primary shrink-0"
                                 >
                                     <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                                     <circle cx="12" cy="7" r="4" />

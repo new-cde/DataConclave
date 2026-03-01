@@ -103,7 +103,7 @@ export default function DayEvents() {
                     <motion.div
                         key={event.day}
                         className={
-                            `relative group backdrop-blur-md bg-gradient-to-br from-indigo-500/10 to-purple-500/10 bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col text-left text-white shadow-lg transition-all duration-300 cursor-pointer overflow-hidden ` +
+                            `relative group backdrop-blur-md bg-gradient-to-br from-primary/10 to-primaryDark/10 border border-white/10 rounded-2xl p-8 flex flex-col text-left text-white shadow-lg transition-all duration-300 cursor-pointer overflow-hidden ` +
                             `hover:scale-105 hover:shadow-2xl hover:from-indigo-500/20 hover:to-purple-500/20`
                         }
                         style={{ boxShadow: '0 4px 32px 0 rgba(139,92,246,0.10), 0 1.5px 8px 0 rgba(99,102,241,0.10)' }}
@@ -117,13 +117,13 @@ export default function DayEvents() {
                         onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') setOpenIdx(idx); }}
                     >
                         {/* Accent bar/dot for day */}
-                        <div className="absolute left-0 top-6 h-8 w-1.5 rounded-r-full bg-gradient-to-b from-indigo-500 to-purple-500"></div>
+                        <div className="absolute left-0 top-6 h-8 w-1.5 rounded-r-full bg-gradient-to-b from-primary to-primaryDark"></div>
                         <div className="flex items-center gap-2 mb-1">
                             <span className={`inline-block w-3 h-3 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 shadow-md`}></span>
                             <span className="text-xs font-bold tracking-wide uppercase text-white/70">{event.day}</span>
                         </div>
                         <div className="text-lg font-semibold text-white/90 mb-1">{event.date}</div>
-                        <div className="text-2xl font-extrabold mb-2 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{event.title}</div>
+                        <div className="text-2xl font-extrabold mb-2 bg-gradient-to-br from-indigo-400 to-purple-400 bg-clip-text text-transparent">{event.title}</div>
                         <div className="text-white/70 mb-2 line-clamp-2">{event.theme}</div>
                         <div className="flex-1">
                             <div className="text-white/60 text-sm mb-2">{event.short || event.description}</div>
@@ -175,17 +175,17 @@ export default function DayEvents() {
                                 <div className="text-2xl font-extrabold mb-2 bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">{dayEvents[openIdx].title}</div>
                                 <div className="text-white/80 mb-3 text-base font-medium">{dayEvents[openIdx].theme}</div>
                                 <div className="flex flex-wrap gap-4 mb-4">
-                                    <div className="flex items-center gap-1 text-sm text-indigo-300 font-semibold">
+                                    <div className="flex items-center gap-1 text-sm text-primaryDark font-semibold">
                                         <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
                                         {dayEvents[openIdx].time}
                                     </div>
-                                    <div className="flex items-center gap-1 text-sm text-purple-300 font-semibold">
+                                    <div className="flex items-center gap-1 text-sm text-primary font-semibold">
                                         <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3" /><circle cx="12" cy="12" r="10" /></svg>
                                         {dayEvents[openIdx].duration}
                                     </div>
                                     <div className="flex items-center gap-1 text-sm text-white/60 font-semibold">
                                         <svg
-                                            className="w-4 h-4 flex-shrink-0 text-purple-400 translate-y-[1px]"
+                                            className="w-4 h-4 flex-shrink-0 text-rimary translate-y-[1px]"
                                             fill="none"
                                             stroke="currentColor"
                                             strokeWidth="2"
@@ -203,7 +203,7 @@ export default function DayEvents() {
                                     </div>
                                 </div>
                                 <div className="mb-2 flex items-center gap-2">
-                                    <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                    <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                                     <span className="text-sm text-white/80 font-semibold">{dayEvents[openIdx].speaker}</span>
                                 </div>
                                 <div className="text-white/80 mb-4 text-sm">{dayEvents[openIdx].details}</div>
