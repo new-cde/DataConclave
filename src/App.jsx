@@ -279,30 +279,70 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
               [countdown.hours, "HOURS"],
               [countdown.minutes, "MINUTES"],
               [countdown.seconds, "SECONDS"]
-            ].map(([val, unit]) => (
-              <motion.div
-                key={unit}
-                className="backdrop-blur-md bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 rounded-2xl p-6 lg:p-8 min-w-[80px] lg:min-w-[120px]"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-              >
-                <div className="text-3xl lg:text-5xl font-bold mb-2" style={{ minHeight: '1em', lineHeight: 1 }}>
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.span
-                      key={val}
-                      initial={{ y: 24, opacity: 0, position: 'absolute' }}
-                      animate={{ y: 0, opacity: 1, position: 'static' }}
-                      exit={{ y: -24, opacity: 0, position: 'absolute' }}
-                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                      style={{ display: 'inline-block', width: '2ch' }}
-                    >
-                      {String(val).padStart(2, '0')}
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-                <div className="text-[10px] lg:text-xs tracking-wider text-gray-400">{unit}</div>
-              </motion.div>
-            ))}
+            ].map(([val, unit]) => {
+              const formatted = String(val).padStart(2, '0');
+              return (
+                <motion.div
+                  key={unit}
+                  className="backdrop-blur-md bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 rounded-2xl p-3 lg:p-6 min-w-[90px] min-h-[90px] lg:min-w-[130px] lg:min-h-[130px] flex flex-col items-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  style={{ boxSizing: 'border-box' }}
+                >
+                  <div
+                    className="relative w-full h-full flex items-center justify-center mb-2"
+                    style={{
+                      perspective: '1000px',
+                      minHeight: '3.2rem',
+                      minWidth: '3.2rem',
+                      maxWidth: '4.5rem',
+                      maxHeight: '4.5rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.span
+                        key={formatted}
+                        initial={{ rotateX: 90, opacity: 0, zIndex: 1 }}
+                        animate={{ rotateX: 0, opacity: 1, zIndex: 2 }}
+                        exit={{ rotateX: -90, opacity: 0, zIndex: 1 }}
+                        transition={{ duration: 0.6, ease: 'easeInOut' }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '100%',
+                          height: '3.2rem',
+                          minHeight: '3.2rem',
+                          minWidth: '3.2rem',
+                          maxWidth: '4.5rem',
+                          maxHeight: '4.5rem',
+                          fontVariantNumeric: 'tabular-nums',
+                          fontWeight: 700,
+                          fontSize: '3rem',
+                          lineHeight: 1.1,
+                          textAlign: 'center',
+                          background: 'rgba(30, 27, 75, 0.18)',
+                          borderRadius: '0.7em',
+                          boxShadow: '0 2px 12px 0 rgba(80,80,120,0.13)',
+                          willChange: 'transform, opacity',
+                          backfaceVisibility: 'hidden',
+                          transformStyle: 'preserve-3d',
+                          position: 'absolute',
+                          color: 'white',
+                          userSelect: 'none',
+                        }}
+                      >
+                        {formatted}
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                  <div className="text-[11px] lg:text-xs tracking-wider text-gray-400 mt-1">{unit}</div>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Data Conclave 2026 - Dates only, no location or buttons */}
