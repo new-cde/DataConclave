@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+// Reuse the logo from public (used earlier as /dsc-logo.jpeg)
+const dscLogo = '/dsc-logo.jpeg';
 import Timeline from "./components/Timeline";
 
 export default function App() {
@@ -336,14 +338,97 @@ export default function App() {
 
       {/* Who We Are Section */}
       <section className="relative py-20 px-8 lg:px-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-8">WHO WE ARE</h2>
-          <p className="text-gray-400 leading-relaxed mb-8">
-            Data Conclave is a comprehensive platform for organizing and promoting data science events, conferences, and other industry-related gatherings. Organized by Data Science Club and DSBS Student Association, our team of experienced professionals is dedicated to providing unparalleled event management services that help you streamline your event planning process and maximize your ROI.
-          </p>
-          <button className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-semibold hover:from-purple-500 hover:to-indigo-500 transition-all">
-            CONTACT
-          </button>
+        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* LEFT: Text Content */}
+          <motion.div
+            className="flex flex-col items-center lg:items-start text-center lg:text-left"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-wide">
+              <span className="bg-gradient-to-r from-purple-400 via-indigo-400 to-purple-600 bg-clip-text text-transparent pr-2">WHO</span>
+              <span className="text-white/90"> WE ARE</span>
+            </h2>
+            <p className="text-gray-300 leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0 text-base lg:text-lg" style={{lineHeight:'1.7'}}>
+              Data Conclave is a comprehensive platform for organizing and promoting data science events, conferences, and other industry-related gatherings. Organized by Data Science Club and DSBS Student Association, our team of experienced professionals. 
+            </p>
+            {/* Social icons and CTA */}
+            <motion.div
+              className="flex items-center gap-4 mb-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.15 } }
+              }}
+            >
+              {/* Instagram */}
+              <motion.a
+                href="https://instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(139,92,246,0.25)] hover:ring-2 hover:ring-purple-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                whileHover={{ scale: 1.13 }}
+                whileTap={{ scale: 0.97 }}
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                {/* Instagram SVG */}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-purple-400">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" strokeWidth="1.5"/>
+                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5"/>
+                  <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/>
+                </svg>
+              </motion.a>
+              {/* LinkedIn */}
+              <motion.a
+                href="https://linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(99,102,241,0.25)] hover:ring-2 hover:ring-indigo-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                whileHover={{ scale: 1.13 }}
+                whileTap={{ scale: 0.97 }}
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              >
+                {/* LinkedIn SVG */}
+                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-indigo-400">
+                  <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" strokeWidth="1.5"/>
+                  <rect x="7.5" y="10.5" width="2.5" height="6" rx="1.2" fill="currentColor"/>
+                  <rect x="11.5" y="10.5" width="2.5" height="6" rx="1.2" fill="currentColor"/>
+                  <circle cx="8.75" cy="8.25" r="1.25" fill="currentColor"/>
+                </svg>
+              </motion.a>
+            </motion.div>
+            <motion.button
+              className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-semibold shadow-lg hover:from-purple-500 hover:to-indigo-500 hover:shadow-[0_0_16px_2px_rgba(139,92,246,0.25)] transition-all focus:outline-none focus:ring-2 focus:ring-purple-400"
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              CONTACT
+            </motion.button>
+          </motion.div>
+          {/* RIGHT: Logo visual highlight */}
+          <motion.div
+            className="flex justify-center items-center"
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
+            <div className="relative w-56 h-56 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 shadow-xl" style={{boxShadow:'0 0 32px 0 rgba(139,92,246,0.18), 0 0 0 8px rgba(99,102,241,0.10)'}}>
+              <div className="absolute inset-0 rounded-full pointer-events-none" style={{background: 'conic-gradient(from 180deg at 50% 50%, #a78bfa 0deg, #6366f1 180deg, #a78bfa 360deg)', opacity: 0.18, filter: 'blur(8px)'}}></div>
+              <img
+                src={dscLogo}
+                alt="Data Science Club Logo"
+                className="w-36 h-36 object-contain rounded-full z-10 shadow-lg"
+                draggable="false"
+              />
+            </div>
+          </motion.div>
         </div>
       </section>
 
