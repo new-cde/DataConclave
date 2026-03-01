@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-// Reuse the logo from public (used earlier as /dsc-logo.png)
-const dscLogo = '/dsc-logo.png';
 import Timeline from "./components/Timeline";
 import NeuralRing from "./components/NeuralRing";
+const dscLogo = '/dsc-logo.png';
+
+const NAV_SECTIONS = [
+  { id: 'about', label: 'ABOUT', href: '#' },
+  { id: 'events-timeline', label: 'EVENTS', href: '#events-timeline' },
+  { id: 'speakers', label: 'SPEAKER', href: '#speakers' },
+  { id: 'sponsors', label: 'SPONSORS', href: '#sponsors' },
+  { id: 'throwback', label: "DC'25", href: '#throwback' },
+];
 
 export default function App() {
+  // Active section for navbar highlight
+  const [activeSection, setActiveSection] = useState('about');
+  const sectionRefs = useRef({});
+
   // Countdown to March 11, 2026
   const getCountdown = () => {
     const eventDate = new Date('2026-03-11T00:00:00');
@@ -29,12 +41,48 @@ export default function App() {
     "/dc25/DC255.jpeg",
   ];
 
+  useEffect(() => {
+    // Map section ids to DOM nodes
+    NAV_SECTIONS.forEach(({ id }) => {
+      sectionRefs.current[id] = document.getElementById(id);
+    });
+    const handleScroll = () => {
+      // fallback for browsers without IntersectionObserver
+      let found = 'about';
+      for (let i = NAV_SECTIONS.length - 1; i >= 0; i--) {
+        const { id } = NAV_SECTIONS[i];
+        const el = sectionRefs.current[id];
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120) {
+            found = id;
+            break;
+          }
+        }
+      }
+      setActiveSection(found);
+    };
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCountdown(getCountdown());
-    }, 1000);
-    return () => clearInterval(interval);
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 140; // navbar offset
+      let current = 'about';
+
+      for (const { id } of NAV_SECTIONS) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollPos) {
+          current = id;
+        }
+      }
+
+      setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // run once on load
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -61,12 +109,48 @@ export default function App() {
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-10 text-sm font-medium text-gray-400">
-          <a href="#" className="hover:text-white transition-colors">ABOUT</a>
-          <a href="#events-timeline" className="hover:text-white transition-colors">EVENTS</a>
-          <a href="#speakers" className="hover:text-white transition-colors">SPEAKER</a>
-          <a href="#sponsors" className="hover:text-white transition-colors">SPONSORS</a>
-          <a href="#throwback" className="hover:text-white transition-colors">DC'25</a>
+        <div className="hidden lg:flex items-center gap-10 text-sm font-medium">
+          {NAV_SECTIONS.map(({ id, label, href }) => (
+            <a
+              key={id}
+              href={href}
+              className={
+                `relative px-2 py-1 transition-all duration-200
+                ${activeSection === id
+                  ? 'text-white font-semibold'
+                  : 'text-gray-400'}
+                `
+              }
+              style={{
+                transition: 'color 0.2s, box-shadow 0.2s',
+              }}
+              onClick={e => {
+                // Smooth scroll
+                const el = document.getElementById(id);
+                if (el) {
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  window.history.replaceState(null, '', href);
+                }
+              }}
+            >
+              <span>{label}</span>
+              {activeSection === id && (
+                <span
+                  className="absolute left-0 right-0 -bottom-1 h-[3px] rounded-full
+             bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-400
+             origin-left will-change-transform"
+                  style={{
+                    transform: activeSection === id ? 'scaleX(1)' : 'scaleX(0)',
+                    opacity: activeSection === id ? 1 : 0,
+                    transition:
+                      'transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), ' +
+                      'opacity 0.5s ease-out',
+                  }}
+                />
+              )}
+            </a>
+          ))}
         </div>
 
         <a
@@ -80,8 +164,8 @@ export default function App() {
         </a>
       </nav>
       {/* Hero Section with Photo Overlay */}
-      <section className="relative min-h-screen flex items-center 
-bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617] overflow-hidden pt-24 lg:pt-0">
+      <section id="about" className="relative min-h-screen flex items-center 
+    bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617] overflow-hidden pt-24 lg:pt-0">
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 w-full 
     grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-12 items-center py-12 lg:py-0">
@@ -218,7 +302,9 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
       {/* ═══════════════════════════════════════════════ */}
       {/* EVENTS TIMELINE SECTION                        */}
       {/* ═══════════════════════════════════════════════ */}
-      <Timeline />
+      <section id="events-timeline">
+        <Timeline />
+      </section>
 
       {/* Speakers Section */}
       <section id="speakers" className="relative py-24 px-8 lg:px-16">
