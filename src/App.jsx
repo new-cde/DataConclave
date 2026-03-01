@@ -213,7 +213,7 @@ export default function App() {
              hover:scale-105
              transition-all duration-300"
                 >
-                  Register Now
+                  Register
                 </a>
               </div>
 
