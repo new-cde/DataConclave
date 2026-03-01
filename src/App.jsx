@@ -187,8 +187,6 @@ export default function App() {
               transition={{ duration: 0.9 }}
             >
 
-
-
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6
           bg-gradient-to-r from-[#00C2FF] via-white to-[#2563EB]
           bg-clip-text text-transparent">
