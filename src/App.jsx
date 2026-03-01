@@ -29,7 +29,6 @@ export default function App() {
     "/dc25/DC255.jpeg",
   ];
 
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(getCountdown());
