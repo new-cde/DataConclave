@@ -69,9 +69,15 @@ export default function App() {
           <a href="#throwback" className="hover:text-white transition-colors">DC'25</a>
         </div>
 
-        <button className="px-5 lg:px-8 py-2.5 lg:py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-xs lg:text-sm font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all">
-          REGISTER
-        </button>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="px-5 lg:px-8 py-2.5 lg:py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-xs lg:text-sm font-semibold hover:from-indigo-500 hover:to-purple-500 transition-all">
+            REGISTER
+          </button>
+        </a>
       </nav>
       {/* Hero Section with Photo Overlay */}
       <section className="relative min-h-screen flex items-center 
@@ -89,7 +95,7 @@ bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617] overflow-hidden pt-2
               transition={{ duration: 0.9 }}
             >
 
-              
+
 
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6
           bg-gradient-to-r from-[#00C2FF] via-white to-[#2563EB]
@@ -101,19 +107,24 @@ bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617] overflow-hidden pt-2
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-<p className="text-sm tracking-wide text-[#00C2FF] mb-4">
+              <p className="text-sm tracking-wide text-[#00C2FF] mb-4">
                 11 – 13 MARCH 2026
               </p>
               <div className="flex justify-center lg:justify-start items-center">
-                <button className="px-8 py-4 rounded-full
-            bg-gradient-to-r from-[#00C2FF] to-[#2563EB]
-            font-semibold tracking-wide
-            shadow-lg shadow-cyan-500/20
-            hover:shadow-cyan-500/40
-            hover:scale-105
-            transition-all duration-300">
+                <a
+                  href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-8 py-4 rounded-full
+             bg-gradient-to-r from-[#00C2FF] to-[#2563EB]
+             font-semibold tracking-wide
+             shadow-lg shadow-cyan-500/20
+             hover:shadow-cyan-500/40
+             hover:scale-105
+             transition-all duration-300"
+                >
                   Register Now
-                </button>
+                </a>
               </div>
 
             </motion.div>
@@ -348,7 +359,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                 <span className="text-base font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>Data Science Club</span>
                 <div className="flex flex-row items-center gap-3">
                   <motion.a
-                    href="#"
+                    href="https://www.instagram.com/dsc_dsbs?igsh=aGQzamlxMWtuYzVi"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Data Science Club Instagram"
@@ -363,10 +374,10 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                     </svg>
                   </motion.a>
                   <motion.a
-                    href="#"
+                    href="https://www.linkedin.com/company/the-data-science-club-srmist/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="DSBS Students’ Association LinkedIn"
+                    aria-label="Data Science Club LinkedIn"
                     className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(99,102,241,0.25)] hover:ring-2 hover:ring-indigo-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                     whileHover={{ scale: 1.13 }}
                     whileTap={{ scale: 0.97 }}
@@ -388,7 +399,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                 <span className="text-base font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>DSBS Students’ Association</span>
                 <div className="flex flex-row items-center gap-3">
                   <motion.a
-                    href="#"
+                    href="https://www.instagram.com/dsbs_students_association?igsh=MTRlemJpbG9pZmp6Yw=="
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="DSBS Students’ Association Instagram"
@@ -403,7 +414,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                     </svg>
                   </motion.a>
                   <motion.a
-                    href="#"
+                    href="https://www.linkedin.com/company/dsbs-students-association-srmist/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="DSBS Students’ Association LinkedIn"
