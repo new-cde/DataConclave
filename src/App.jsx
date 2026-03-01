@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 // Reuse the logo from public (used earlier as /dsc-logo.png)
@@ -90,9 +89,7 @@ bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617] overflow-hidden pt-2
               transition={{ duration: 0.9 }}
             >
 
-              <p className="text-sm tracking-wide text-[#00C2FF] mb-4">
-                11 – 13 MARCH 2026
-              </p>
+              
 
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6
           bg-gradient-to-r from-[#00C2FF] via-white to-[#2563EB]
@@ -104,7 +101,9 @@ bg-gradient-to-br from-[#05080F] via-[#0A1424] to-[#020617] overflow-hidden pt-2
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-
+<p className="text-sm tracking-wide text-[#00C2FF] mb-4">
+                11 – 13 MARCH 2026
+              </p>
               <div className="flex justify-center lg:justify-start items-center">
                 <button className="px-8 py-4 rounded-full
             bg-gradient-to-r from-[#00C2FF] to-[#2563EB]
@@ -427,6 +426,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
             </div>
           </motion.div>
           <motion.div
+
             className="flex justify-center items-center"
             initial={{ opacity: 0, scale: 0.85 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -495,6 +495,8 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
 
             </div>
           </motion.div>
+
+
         </div>
       </section>
 
