@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-// Reuse the logo from public (used earlier as /dsc-logo.jpeg)
+// Reuse the logo from public (used earlier as /dsc-logo.png)
 const dscLogo = '/dsc-logo.jpeg';
 import Timeline from "./components/Timeline";
 
@@ -109,9 +109,10 @@ export default function App() {
               <div className="w-16 h-16 rounded-full p-[3px] bg-gradient-to-br from-indigo-400 to-purple-500 shadow-[0_10px_28px_rgba(99,102,241,0.35)]">
                 <div className="w-full h-full rounded-full bg-white flex items-center justify-center overflow-hidden">
                   <img
-                    src="/dsc-logo.jpeg"
+                    src="/dsc-logo.png"
                     alt="Data Science Club Logo"
-                    className="w-[74%] h-[74%] object-contain"
+                    className="w-full h-full object-cover rounded-full z-10 scale-[0.88]"
+                    draggable="false"
                   />
                 </div>
               </div>
@@ -230,9 +231,9 @@ export default function App() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: "Dr. Placeholder One", role: "AI Research Lead", topic: "Future of Applied AI", logo: "/dsc-logo.jpeg" },
+              { name: "Dr. Placeholder One", role: "AI Research Lead", topic: "Future of Applied AI", logo: "/dsc-logo.png" },
               { name: "Ms. Sample Two", role: "Senior Data Scientist", topic: "ML in Production", logo: "/vite.svg" },
-              { name: "Mr. Demo Three", role: "Analytics Consultant", topic: "Data Storytelling", logo: "/dsc-logo.jpeg" },
+              { name: "Mr. Demo Three", role: "Analytics Consultant", topic: "Data Storytelling", logo: "/dsc-logo.png" },
               { name: "Prof. Mock Four", role: "Academic Expert", topic: "Responsible AI Systems", logo: "/vite.svg" },
             ].map((speaker, idx) => (
               <motion.div
@@ -272,9 +273,9 @@ export default function App() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { name: "Title Sponsor", logo: "/dsc-logo.jpeg" },
+              { name: "Title Sponsor", logo: "/dsc-logo.png" },
               { name: "Tech Partner", logo: "/vite.svg" },
-              { name: "Community Partner", logo: "/dsc-logo.jpeg" },
+              { name: "Community Partner", logo: "/dsc-logo.png" },
             ].map((sponsor, idx) => (
               <motion.div
                 key={sponsor.name}
@@ -342,65 +343,92 @@ export default function App() {
               <span className="bg-gradient-to-r from-purple-400 via-indigo-400 to-purple-600 bg-clip-text text-transparent pr-2">WHO</span>
               <span className="text-white/90"> WE ARE</span>
             </h2>
-            <p className="text-gray-300 leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0 text-base lg:text-lg" style={{lineHeight:'1.7'}}>
-              Data Conclave is a comprehensive platform for organizing and promoting data science events, conferences, and other industry-related gatherings. Organized by Data Science Club and DSBS Student Association, our team of experienced professionals. 
+            <p className="text-gray-300 leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0 text-base lg:text-lg" style={{ lineHeight: '1.7' }}>
+              Data Conclave is a comprehensive platform for organizing and promoting data science events, conferences, and other industry-related gatherings. Organized by Data Science Club and DSBS Student Association, our team of experienced professionals.
             </p>
-            {/* Social icons and CTA */}
-            <motion.div
-              className="flex items-center gap-4 mb-4"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.15 } }
-              }}
-            >
-              {/* Instagram */}
-              <motion.a
-                href="https://instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(139,92,246,0.25)] hover:ring-2 hover:ring-purple-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-400"
-                whileHover={{ scale: 1.13 }}
-                whileTap={{ scale: 0.97 }}
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              >
-                {/* Instagram SVG */}
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-purple-400">
-                  <rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" strokeWidth="1.5"/>
-                  <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5"/>
-                  <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/>
-                </svg>
-              </motion.a>
-              {/* LinkedIn */}
-              <motion.a
-                href="https://linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(99,102,241,0.25)] hover:ring-2 hover:ring-indigo-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                whileHover={{ scale: 1.13 }}
-                whileTap={{ scale: 0.97 }}
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              >
-                {/* LinkedIn SVG */}
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-indigo-400">
-                  <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" strokeWidth="1.5"/>
-                  <rect x="7.5" y="10.5" width="2.5" height="6" rx="1.2" fill="currentColor"/>
-                  <rect x="11.5" y="10.5" width="2.5" height="6" rx="1.2" fill="currentColor"/>
-                  <circle cx="8.75" cy="8.25" r="1.25" fill="currentColor"/>
-                </svg>
-              </motion.a>
-            </motion.div>
-            <motion.button
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-semibold shadow-lg hover:from-purple-500 hover:to-indigo-500 hover:shadow-[0_0_16px_2px_rgba(139,92,246,0.25)] transition-all focus:outline-none focus:ring-2 focus:ring-purple-400"
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              CONTACT
-            </motion.button>
+            {/* Social links: two groups, no CTA */}
+            <div className="grid gap-4 mb-4 w-full" style={{ gridTemplateColumns: '220px 1fr' }}>
+              {/* Data Science Club group */}
+              <div className="contents">
+                <span className="text-sm font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>Data Science Club</span>
+                <div className="flex flex-row items-center gap-3">
+                  <motion.a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Data Science Club Instagram"
+                    className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(99,102,241,0.25)] hover:ring-2 hover:ring-indigo-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    whileHover={{ scale: 1.13 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-purple-400">
+                      <rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+                    </svg>
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="DSBS Students’ Association LinkedIn"
+                    className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(99,102,241,0.25)] hover:ring-2 hover:ring-indigo-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    whileHover={{ scale: 1.13 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-5 h-5 text-indigo-400"
+                      aria-hidden="true"
+                    >
+                      <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.7c0-1.83-.03-4.18-2.55-4.18-2.55 0-2.94 1.99-2.94 4.05V24h-4V8z" />
+                    </svg>
+                  </motion.a>
+                </div>
+              </div>
+              {/* DSBS Students’ Association group */}
+              <div className="contents">
+                <span className="text-sm font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>DSBS Students’ Association</span>
+                <div className="flex flex-row items-center gap-3">
+                  <motion.a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="DSBS Students’ Association Instagram"
+                    className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(139,92,246,0.25)] hover:ring-2 hover:ring-purple-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    whileHover={{ scale: 1.13 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="text-purple-400">
+                      <rect x="2.5" y="2.5" width="19" height="19" rx="6" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="1.5" />
+                      <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" />
+                    </svg>
+                  </motion.a>
+                  <motion.a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="DSBS Students’ Association LinkedIn"
+                    className="w-11 h-11 flex items-center justify-center rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-md transition-all hover:shadow-[0_0_0_4px_rgba(99,102,241,0.25)] hover:ring-2 hover:ring-indigo-500/40 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    whileHover={{ scale: 1.13 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-5 h-5 text-indigo-400"
+                      aria-hidden="true"
+                    >
+                      <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.7c0-1.83-.03-4.18-2.55-4.18-2.55 0-2.94 1.99-2.94 4.05V24h-4V8z" />
+                    </svg>
+                  </motion.a>
+                </div>
+              </div>
+            </div>
           </motion.div>
           {/* RIGHT: Logo visual highlight */}
           <motion.div
@@ -410,12 +438,29 @@ export default function App() {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <div className="relative w-56 h-56 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 shadow-xl" style={{boxShadow:'0 0 32px 0 rgba(139,92,246,0.18), 0 0 0 8px rgba(99,102,241,0.10)'}}>
-              <div className="absolute inset-0 rounded-full pointer-events-none" style={{background: 'conic-gradient(from 180deg at 50% 50%, #a78bfa 0deg, #6366f1 180deg, #a78bfa 360deg)', opacity: 0.18, filter: 'blur(8px)'}}></div>
+            <div
+              className="relative w-56 h-56 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden"
+              style={{
+                boxShadow:
+                  '0 0 32px 0 rgba(139,92,246,0.18), 0 0 0 8px rgba(99,102,241,0.10)',
+              }}
+            >
+              {/* Glow ring */}
+              <div
+                className="absolute inset-0 rounded-full pointer-events-none"
+                style={{
+                  background:
+                    'conic-gradient(from 180deg at 50% 50%, #a78bfa 0deg, #6366f1 180deg, #a78bfa 360deg)',
+                  opacity: 0.18,
+                  filter: 'blur(8px)',
+                }}
+              />
+
+              {/* Masked circular logo */}
               <img
-                src={dscLogo}
+                src="/dsc-logo.png"
                 alt="Data Science Club Logo"
-                className="w-36 h-36 object-contain rounded-full z-10 shadow-lg"
+                className="w-full h-full object-cover rounded-full z-10 scale-[0.88]"
                 draggable="false"
               />
             </div>
