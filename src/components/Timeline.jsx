@@ -78,9 +78,9 @@ export default function Timeline() {
                     transition={{ duration: 0.6 }}
                 >
                     <div className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2">
-                        4 DAYS. 4 EXPERIENCES
+                        3 DAYS. 3 EXPERIENCES
                     </div>
-                    <p className="text-base md:text-lg text-white/70 mb-6">March 10-13, 2026</p>
+                    <p className="text-base md:text-lg text-white/70 mb-6">March 11-13, 2026</p>
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/[.06] mb-6">
                         <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
                         <span className="text-[11px] tracking-[0.25em] text-purple-300 uppercase font-semibold">
@@ -94,7 +94,7 @@ export default function Timeline() {
                         </span>
                     </h2>
                     <p className="mt-4 text-white/40 max-w-lg mx-auto text-sm leading-relaxed">
-                        Four power-packed days of workshops, hackathons, talks &amp; panels
+                        Three power-packed days of workshops, hackathons, talks &amp; panels
                     </p>
                 </motion.div>
 
@@ -457,18 +457,25 @@ function TimelineBubbleCard({
                             style={{
                                 borderTop: "1px solid rgba(255,255,255,0.04)",
                             }}
-                            animate={{ opacity: hovered ? 1 : 0.4 }}
+                            animate={{ opacity: hovered ? 1 : 0.8 }}
                             transition={{ duration: 0.25 }}
                         >
-                            <button
-                                className="w-full rounded-lg px-4 py-2.5 text-sm font-semibold text-white"
-                                style={{
-                                    background: `linear-gradient(135deg, ${accent.from}, ${accent.to})`,
-                                    boxShadow: `0 8px 24px ${accent.glow}`,
-                                }}
+                            <a
+                                href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full"
                             >
-                                Register
-                            </button>
+                                <button
+                                    className="w-full rounded-lg px-4 py-2.5 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+                                    style={{
+                                        background: `linear-gradient(135deg, ${accent.from}, ${accent.to})`,
+                                        boxShadow: `0 8px 24px ${accent.glow}`,
+                                    }}
+                                >
+                                    Register
+                                </button>
+                            </a>
                         </motion.div>
                     </div>
 

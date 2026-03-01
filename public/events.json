@@ -2,8 +2,8 @@
     {
         "id": 1,
         "day": "DAY 1",
-        "date": "March 10, 2026",
-        "dateLabel": "10 MAR",
+        "date": "March 11, 2026",
+        "dateLabel": "11 MAR",
         "title": "Workshop",
         "theme": "Foundations of Data Science & Applied Analytics",
         "time": "10:00 AM – 4:00 PM",
@@ -23,8 +23,8 @@
     {
         "id": 2,
         "day": "DAY 2",
-        "date": "March 11, 2026",
-        "dateLabel": "11 MAR",
+        "date": "March 12, 2026",
+        "dateLabel": "12 MAR",
         "title": "Hackathon",
         "theme": "Solving Real-World Problems Using Data",
         "time": "9:00 AM – 9:00 PM",
@@ -44,30 +44,9 @@
     {
         "id": 3,
         "day": "DAY 3",
-        "date": "March 12, 2026",
-        "dateLabel": "12 MAR",
-        "title": "Technical Talks",
-        "theme": "Trends & Careers in Data Science",
-        "time": "10:30 AM – 4:30 PM",
-        "duration": "3 sessions (60–75 mins each)",
-        "mode": "Offline",
-        "speaker": "Industry experts & academicians",
-        "short": "2–3 Expert Technical Talks",
-        "description": "Day 3 features technical talks delivered by industry professionals and academicians. These sessions focus on emerging trends, real-world applications, and career guidance in Data Science, AI, and related domains.",
-        "flow": [
-            "AI & Machine Learning in Industry",
-            "From Data Science to MLOps",
-            "Career paths in Analytics & Research",
-            "Interactive Q&A sessions"
-        ],
-        "side": "right"
-    },
-    {
-        "id": 4,
-        "day": "DAY 4",
         "date": "March 13, 2026",
         "dateLabel": "13 MAR",
-        "title": "Talk & Panel Discussion",
+        "title": "Technical Talk & Panel Discussion",
         "theme": "Careers, Research & the Future of Data Science",
         "time": "11:00 AM – 3:30 PM",
         "duration": "1 Technical Talk + Panel Discussion",
@@ -81,6 +60,6 @@
             "Audience interaction and open discussion",
             "Closing remarks"
         ],
-        "side": "left"
+        "side": "right"
     }
 ]
