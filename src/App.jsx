@@ -300,10 +300,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
-              DC'25
+              DATA CONCLAVE ARCHIVES
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold mb-2">DC'25</h2>
-            <p className="text-white/60">Throwback highlights from DataConclave 2025.</p>
+            <p className="text-white/60">A look back at key moments, sessions, and experiences from Data Conclave 2025.</p>
           </div>
 
           <div className="relative overflow-hidden py-2">
@@ -344,13 +344,15 @@ export default function App() {
               <span className="text-white/90"> WE ARE</span>
             </h2>
             <p className="text-gray-300 leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0 text-base lg:text-lg" style={{ lineHeight: '1.7' }}>
-              Data Conclave is a comprehensive platform for organizing and promoting data science events, conferences, and other industry-related gatherings. Organized by Data Science Club and DSBS Student Association, our team of experienced professionals.
+              The Data Science Club is a student-led technical community focused on exploring data science, machine learning, and analytics through workshops, projects, hackathons, and industry interactions.
+              <br /><br />
+              The DSBS Students’ Association represents students of the Data Science and Business Systems department, organizing academic, technical, and cultural initiatives to promote collaboration, leadership, and holistic development.
             </p>
             {/* Social links: two groups, no CTA */}
             <div className="grid gap-4 mb-4 w-full" style={{ gridTemplateColumns: '220px 1fr' }}>
               {/* Data Science Club group */}
               <div className="contents">
-                <span className="text-sm font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>Data Science Club</span>
+                <span className="text-base font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>Data Science Club</span>
                 <div className="flex flex-row items-center gap-3">
                   <motion.a
                     href="#"
@@ -390,7 +392,7 @@ export default function App() {
               </div>
               {/* DSBS Students’ Association group */}
               <div className="contents">
-                <span className="text-sm font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>DSBS Students’ Association</span>
+                <span className="text-base font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>DSBS Students’ Association</span>
                 <div className="flex flex-row items-center gap-3">
                   <motion.a
                     href="#"
@@ -430,41 +432,75 @@ export default function App() {
               </div>
             </div>
           </motion.div>
-          {/* RIGHT: Logo visual highlight */}
           <motion.div
-            className="flex justify-center items-center"
-            initial={{ opacity: 0, scale: 0.85 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          >
-            <div
-              className="relative w-56 h-56 rounded-full flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden"
-              style={{
-                boxShadow:
-                  '0 0 32px 0 rgba(139,92,246,0.18), 0 0 0 8px rgba(99,102,241,0.10)',
-              }}
-            >
-              {/* Glow ring */}
-              <div
-                className="absolute inset-0 rounded-full pointer-events-none"
-                style={{
-                  background:
-                    'conic-gradient(from 180deg at 50% 50%, #a78bfa 0deg, #6366f1 180deg, #a78bfa 360deg)',
-                  opacity: 0.18,
-                  filter: 'blur(8px)',
-                }}
-              />
+  className="flex justify-center items-center"
+  initial={{ opacity: 0, scale: 0.85 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: 0.8, ease: 'easeOut' }}
+>
+  <div className="flex items-center gap-12">
 
-              {/* Masked circular logo */}
-              <img
-                src="/dsc-logo.png"
-                alt="Data Science Club Logo"
-                className="w-full h-full object-cover rounded-full z-10 scale-[0.88]"
-                draggable="false"
-              />
-            </div>
-          </motion.div>
+    {/* Data Science Club Logo */}
+    <div
+      className="relative w-56 h-56 rounded-full flex items-center justify-center
+                 bg-white/5 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden"
+      style={{
+        boxShadow:
+          '0 0 32px 0 rgba(139,92,246,0.18), 0 0 0 8px rgba(99,102,241,0.10)',
+      }}
+    >
+      {/* Glow ring */}
+      <div
+        className="absolute inset-0 rounded-full pointer-events-none"
+        style={{
+          background:
+            'conic-gradient(from 180deg at 50% 50%, #a78bfa 0deg, #6366f1 180deg, #a78bfa 360deg)',
+          opacity: 0.18,
+          filter: 'blur(8px)',
+        }}
+      />
+
+      {/* Masked circular logo */}
+      <img
+        src="/dsc-logo.png"
+        alt="Data Science Club Logo"
+        className="w-full h-full object-cover rounded-full z-10 scale-[0.88]"
+        draggable="false"
+      />
+    </div>
+
+    {/* DSBS Students’ Association Logo  */}
+    <div
+      className="relative w-56 h-56 rounded-full flex items-center justify-center
+                 bg-white/5 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden"
+      style={{
+        boxShadow:
+          '0 0 32px 0 rgba(59,130,246,0.18), 0 0 0 8px rgba(37,99,235,0.10)',
+      }}
+    >
+      {/* Glow ring */}
+      <div
+        className="absolute inset-0 rounded-full pointer-events-none"
+        style={{
+          background:
+            'conic-gradient(from 180deg at 50% 50%, #60a5fa 0deg, #2563eb 180deg, #60a5fa 360deg)',
+          opacity: 0.18,
+          filter: 'blur(8px)',
+        }}
+      />
+
+      {/* Masked circular logo */}
+      <img
+        src="/dsbs-assoc-logo.jpeg"
+        alt="DSBS Students’ Association Logo"
+        className="w-full h-full object-cover rounded-full z-10 scale-[0.88]"
+        draggable="false"
+      />
+    </div>
+
+  </div>
+</motion.div>
         </div>
       </section>
 
@@ -477,7 +513,7 @@ export default function App() {
           </div>
 
           <div className="text-sm text-gray-500">
-            © 2025 Data Conclave. Organized by Data Science Club & DSBS Student Association
+            © 2026 Data Conclave. Organized by Data Science Club & DSBS Student Association
           </div>
         </div>
       </footer>
