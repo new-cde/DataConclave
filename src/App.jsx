@@ -6,7 +6,21 @@ const dscLogo = '/dsc-logo.jpeg';
 import Timeline from "./components/Timeline";
 
 export default function App() {
-  const [countdown, setCountdown] = useState({ days: 10, hours: 4, minutes: 34, seconds: 28 });
+  // Countdown to March 11, 2026
+  const getCountdown = () => {
+    const eventDate = new Date('2026-03-11T00:00:00');
+    const now = new Date();
+    let diff = Math.max(0, eventDate - now);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    diff -= days * (1000 * 60 * 60 * 24);
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    diff -= hours * (1000 * 60 * 60);
+    const minutes = Math.floor(diff / (1000 * 60));
+    diff -= minutes * (1000 * 60);
+    const seconds = Math.floor(diff / 1000);
+    return { days, hours, minutes, seconds };
+  };
+  const [countdown, setCountdown] = useState(getCountdown());
   const throwbackImages = [
     "/dc25/DC251.jpeg",
     "/dc25/DC252.jpeg",
@@ -18,14 +32,7 @@ export default function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCountdown(prev => {
-        let { days, hours, minutes, seconds } = prev;
-        seconds--;
-        if (seconds < 0) { seconds = 59; minutes--; }
-        if (minutes < 0) { minutes = 59; hours--; }
-        if (hours < 0) { hours = 23; days--; }
-        return { days, hours, minutes, seconds };
-      });
+      setCountdown(getCountdown());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
@@ -165,7 +172,7 @@ export default function App() {
           </h2>
 
           <p className="text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Whether you're planning a small business conference or a large-scale festival, Data Conclave has you covered with cutting-edge tools and seamless experiences for your attendees.
+            Designed for students and aspiring professionals, Data Conclave offers a space to learn, collaborate, and explore real-world applications of data science and artificial intelligence.
           </p>
 
           {/* Countdown Boxes */}
@@ -188,32 +195,16 @@ export default function App() {
             ))}
           </div>
 
-          {/* Innovation Summit 2025 */}
+          {/* Data Conclave 2026 - Dates only, no location or buttons */}
           <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-6">INNOVATION SUMMIT 2025</h3>
-
+            <h3 className="text-2xl lg:text-3xl font-bold mb-6">DATA CONCLAVE 2026</h3>
             <div className="flex items-center justify-center gap-8 mb-8 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                   <path d="M5 2a1 1 0 00-1 1v1H3a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H6V3a1 1 0 00-1-1z" />
                 </svg>
-                October 15-17, 2025
+                March 11–13, 2026
               </div>
-              <div className="flex items-center gap-2">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <path fillRule="evenodd" d="M4 4a4 4 0 118 0c0 1.76-1.12 3.25-2.67 3.84l.67 5.16H6l.67-5.16A4.002 4.002 0 014 4z" clipRule="evenodd" />
-                </svg>
-                Tokyo, Japan
-              </div>
-            </div>
-
-            <div className="flex gap-4 justify-center">
-              <button className="px-8 py-3 rounded-full border border-white/30 text-sm font-semibold hover:bg-white/10 transition-all">
-                VIEW DETAILS
-              </button>
-              <button className="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-sm font-semibold hover:from-purple-500 hover:to-indigo-500 transition-all">
-                BUY TICKET
-              </button>
             </div>
           </div>
         </div>
