@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Timeline from "./components/Timeline";
 import NeuralRing from "./components/NeuralRing";
 const dscLogo = '/dsc-logo.png';
@@ -62,7 +62,15 @@ export default function App() {
       }
       setActiveSection(found);
     };
+    // You may want to add event listeners here if needed
   }, []);
+  useEffect(() => {
+  const interval = setInterval(() => {
+    setCountdown(getCountdown());
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -278,7 +286,20 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
               >
-                <div className="text-3xl lg:text-5xl font-bold mb-2">{String(val).padStart(2, '0')}</div>
+                <div className="text-3xl lg:text-5xl font-bold mb-2" style={{ minHeight: '1em', lineHeight: 1 }}>
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.span
+                      key={val}
+                      initial={{ y: 24, opacity: 0, position: 'absolute' }}
+                      animate={{ y: 0, opacity: 1, position: 'static' }}
+                      exit={{ y: -24, opacity: 0, position: 'absolute' }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                      style={{ display: 'inline-block', width: '2ch' }}
+                    >
+                      {String(val).padStart(2, '0')}
+                    </motion.span>
+                  </AnimatePresence>
+                </div>
                 <div className="text-[10px] lg:text-xs tracking-wider text-gray-400">{unit}</div>
               </motion.div>
             ))}
