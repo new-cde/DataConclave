@@ -184,7 +184,7 @@ export default function App() {
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6
           bg-gradient-to-r from-[#00C2FF] via-white to-[#2563EB]
           bg-clip-text text-transparent">
-                Data Conclave 26'
+                Data Conclave '26
               </h1>
 
               <p className="text-[#9CA3AF] leading-relaxed mb-10 max-w-xl text-lg mx-auto lg:mx-0">
@@ -392,7 +392,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
             <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
               DATA CONCLAVE ARCHIVES
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-2">DC'25</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-2">DC '25</h2>
             <p className="text-white/60">A look back at key moments, sessions, and experiences from Data Conclave 2025.</p>
           </div>
 
@@ -408,7 +408,7 @@ bg-gradient-to-b from-transparent to-[#05080F]" />
                 >
                   <img
                     src={src}
-                    alt={`DC25 throwback ${idx + 1}`}
+                    alt={`DC 25 throwback ${idx + 1}`}
                     className="w-full h-64 sm:h-80 rounded-xl object-cover"
                   />
                 </div>
