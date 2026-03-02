@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         primary: "#22d3ee",      // cyan
-      primaryDark: "#0ea5e9",  // blue
-      deep: "#020617",         // deep navy
-      surface: "#0A1424"  
+        primaryDark: "#0ea5e9",  // blue
+        deep: "#020617",         // deep navy
+        surface: "#0A1424"
       },
       backgroundImage: {
         'primary-gradient':
