@@ -95,7 +95,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen text-white relative scroll-smooth
+    <div className="min-h-screen text-white relative scroll-smooth overflow-x-hidden
 bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]">  <div className="absolute inset-0 pointer-events-none opacity-10">
         <svg className="absolute right-0 top-0 h-full" width="600" viewBox="0 0 600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M600 0C600 0 500 100 500 200C500 300 600 400 600 500C600 600 500 700 500 800C500 900 600 1000 600 1100V1200H600V0Z" fill="url(#wave-gradient)" fillOpacity="0.1" />
@@ -109,7 +109,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 lg:px-16 py-4 lg:py-6 flex items-center justify-between backdrop-blur-md bg-slate-900/20 border-b border-white/10">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-16 py-4 sm:py-5 lg:py-6 flex items-center justify-between backdrop-blur-md bg-slate-900/20 border-b border-white/10">
         <div className="flex items-center gap-3">
           <div className="text-xl lg:text-2xl font-bold tracking-tight flex items-center gap-2">
             DATA CONCLAVE
@@ -258,7 +258,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
 
       {/* Hero Section with Photo Overlay */}
       <section className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-24 lg:pt-0">
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-16 w-full 
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 w-full 
           grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center py-12 lg:py-0">
           {/* LEFT — TEXT */}
           <div className="text-center lg:text-left">
@@ -268,13 +268,13 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9 }}
             >
-              <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6
+              <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold leading-tight mb-6
           bg-gradient-to-r from-[#00C2FF] via-white to-[#2563EB]
           bg-clip-text text-transparent">
                 Data Conclave '26
               </h1>
 
-              <p className="text-[#9CA3AF] leading-relaxed mb-10 max-w-xl text-lg mx-auto lg:mx-0">
+              <p className="text-[#9CA3AF] leading-relaxed mb-10 max-w-xl text-base sm:text-lg mx-auto lg:mx-0">
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
@@ -314,7 +314,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
     bg-[#00C2FF]/10 blur-3xl invisible lg:visible" />
       </section>
       {/* Countdown Section with Photo Background */}
-      <section className="relative py-24 px-8 lg:px-16">
+      <section className="relative py-16 sm:py-24 px-4 sm:px-8 lg:px-16">
         {/* Background Photo */}
         <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,194,255,0.06),transparent_70%)]"/>
             <svg width="100%" height="100%" viewBox="0 0 1920 600" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -325,12 +325,12 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 </linearGradient>
               </defs>
             </svg>
-        <div className="relative z-10 max-w-7xl mx-auto px-8 lg:px-16 text-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 text-center">
           <div className="text-xs tracking-[0.2em] text-primary/80 mb-4 uppercase font-semibold">
             The Ultimate Platform for Unforgettable Events
           </div>
 
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
             Experience Data Conclave Today!
           </h2>
 
@@ -350,7 +350,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               return (
                 <motion.div
                   key={unit}
-                  className="backdrop-blur-md bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 rounded-2xl p-2 sm:p-3 lg:p-6 min-w-[60px] sm:min-w-[80px] lg:min-w-[130px] min-h-[60px] sm:min-h-[80px] lg:min-h-[130px] flex flex-col items-center shrink-0"
+                  className="backdrop-blur-md bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 rounded-2xl p-2 sm:p-3 lg:p-6 min-w-[50px] sm:min-w-[80px] lg:min-w-[130px] min-h-[50px] sm:min-h-[80px] lg:min-h-[130px] flex flex-col items-center shrink-0"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   style={{ boxSizing: 'border-box' }}
@@ -380,7 +380,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
 
           {/* Data Conclave 2026 - Dates only, no location or buttons */}
           <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl lg:text-3xl font-bold mb-6">DATA CONCLAVE 2026</h3>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-6">DATA CONCLAVE 2026</h3>
             <div className="flex items-center justify-center gap-8 mb-8 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
@@ -401,13 +401,13 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       </section>
 
       {/* Speakers Section */}
-      <section id="speakers" className="relative py-24 px-8 lg:px-16">
+      <section id="speakers" className="relative py-16 sm:py-24 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
               Featured Speakers
             </p>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-3">Meet Our Speakers</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">Meet Our Speakers</h2>
             <p className="text-white/60 max-w-2xl mx-auto">
               Lineup to be finalized. These are placeholder profiles for layout preview.
             </p>
@@ -445,13 +445,13 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       </section>
 
       {/* Sponsors Section */}
-      <section id="sponsors" className="relative py-20 px-8 lg:px-16">
+      <section id="sponsors" className="relative py-16 sm:py-20 px-4 sm:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
               Our Sponsors
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-2">Powered By Supporters</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">Powered By Supporters</h2>
             <p className="text-white/60">Placeholder sponsor slots. Final logos can be replaced anytime.</p>
           </div>
 
@@ -480,13 +480,13 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       </section>
 
       {/* Throwback Section */}
-      <section id="throwback" className="relative py-24 px-8 lg:px-16">
+      <section id="throwback" className="relative py-16 sm:py-24 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
               DATA CONCLAVE ARCHIVES
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-2">DC '25</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">DC '25</h2>
             <p className="text-white/60">A look back at key moments, sessions, and experiences from Data Conclave 2025.</p>
           </div>
 
@@ -498,7 +498,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               {[...throwbackImages, ...throwbackImages].map((src, idx) => (
                 <div
                   key={`${src}-${idx}`}
-                  className="shrink-0 w-[340px] sm:w-[440px] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[.08] to-white/[.03] p-2"
+                  className="shrink-0 w-[280px] sm:w-[340px] md:w-[440px] rounded-2xl border border-white/10 bg-gradient-to-br from-white/[.08] to-white/[.03] p-2"
                 >
                   <img
                     src={src}
@@ -513,7 +513,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       </section>
 
       {/* Who We Are Section */}
-      <section className="relative py-20 px-8 lg:px-16">
+      <section className="relative py-16 sm:py-20 px-4 sm:px-8 lg:px-16">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* LEFT: Text Content */}
           <motion.div
@@ -523,7 +523,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-wide">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 tracking-wide">
               <span className="bg-gradient-to-r from-purple-400 via-indigo-400 to-purple-600 bg-clip-text text-transparent pr-2">WHO</span>
               <span className="text-white/90"> WE ARE</span>
             </h2>
@@ -533,10 +533,10 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               The DSBS Students’ Association represents students of the Data Science and Business Systems department, organizing academic, technical, and cultural initiatives to promote collaboration, leadership, and holistic development.
             </p>
             {/* Social links: two groups, no CTA */}
-            <div className="grid gap-4 mb-4 w-full" style={{ gridTemplateColumns: '220px 1fr' }}>
+            <div className="grid gap-4 mb-4 w-full" style={{ gridTemplateColumns: '150px 1fr' }}>
               {/* Data Science Club group */}
               <div className="contents">
-                <span className="text-base font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>Data Science Club</span>
+                <span className="text-base font-semibold text-white/80 min-w-[120px] sm:min-w-[150px] inline-block">Data Science Club</span>
                 <div className="flex flex-row items-center gap-3">
                   <motion.a
                     href="https://www.instagram.com/dsc_dsbs?igsh=aGQzamlxMWtuYzVi"
@@ -576,7 +576,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               </div>
               {/* DSBS Students’ Association group */}
               <div className="contents">
-                <span className="text-base font-semibold text-white/80" style={{ minWidth: '200px', display: 'inline-block' }}>DSBS Students’ Association</span>
+                <span className="text-base font-semibold text-white/80 min-w-[120px] sm:min-w-[150px] inline-block">DSBS Students’ Association</span>
                 <div className="flex flex-row items-center gap-3">
                   <motion.a
                     href="https://www.instagram.com/dsbs_students_association?igsh=MTRlemJpbG9pZmp6Yw=="
@@ -624,11 +624,11 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <div className="flex items-center gap-12">
+            <div className="flex flex-col md:flex-row items-center gap-12">
 
               {/* Data Science Club Logo */}
               <div
-                className="relative w-56 h-56 rounded-full flex items-center justify-center
+                className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full flex items-center justify-center
                  bg-white/5 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden"
                 style={{
                   boxShadow:
@@ -657,7 +657,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
 
               {/* DSBS Students’ Association Logo  */}
               <div
-                className="relative w-56 h-56 rounded-full flex items-center justify-center
+                className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full flex items-center justify-center
                  bg-white/5 backdrop-blur-md border border-white/10 shadow-xl overflow-hidden"
                 style={{
                   boxShadow:
@@ -692,7 +692,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       </section>
 
       {/* Footer */}
-      <footer className="relative py-12 px-8 lg:px-16 border-t border-white/5">
+      <footer className="relative py-12 px-4 sm:px-8 lg:px-16 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <div className="text-xl font-bold">DATA CONCLAVE</div>

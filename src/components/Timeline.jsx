@@ -62,7 +62,7 @@ export default function Timeline() {
         <section
             id="events-timeline"
             ref={sectionRef}
-            className="relative py-28 px-6 lg:px-16 overflow-hidden"
+            className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-16 overflow-hidden"
         >
             {/* ── ambient glows ── */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-indigo-600/[.04] rounded-full blur-[180px] pointer-events-none" />
@@ -87,7 +87,7 @@ export default function Timeline() {
                             Schedule
                         </span>
                     </div>
-                    <h2 className="text-4xl lg:text-6xl font-extrabold tracking-tight">
+                    <h2 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight">
                         EVENT{" "}
                         <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                             TIMELINE

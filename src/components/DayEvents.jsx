@@ -91,9 +91,9 @@ export default function DayEvents() {
     const [openIdx, setOpenIdx] = useState(null);
 
     return (
-        <section id="events" className="py-24 px-8 lg:px-16 relative z-10">
+        <section id="events" className="py-16 sm:py-24 px-4 sm:px-8 lg:px-16 relative z-10">
             <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">
+                <h2 className="text-2xl md:text-5xl font-bold tracking-tight text-white mb-2">
                     4 DAYS. 4 EXPERIENCES
                 </h2>
                 <p className="text-lg text-white/70">March 10–13, 2026</p>
