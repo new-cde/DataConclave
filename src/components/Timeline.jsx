@@ -3,12 +3,22 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 /* ─── accent palette per card index ─── */
 const accents = [
-    { from: "#6366f1", to: "#a855f7", glow: "rgba(99,102,241,0.25)" },
-    { from: "#ec4899", to: "#f43f5e", glow: "rgba(236,72,153,0.25)" },
-    { from: "#14b8a6", to: "#06b6d4", glow: "rgba(20,184,166,0.25)" },
-    { from: "#f59e0b", to: "#ef4444", glow: "rgba(245,158,11,0.25)" },
+  {
+    from: "#22d3ee", // Cyan
+    to: "#0ea5e9",
+    glow: "rgba(34,211,238,0.28)"
+  },
+  {
+    from: "#06b6d4",   // Day 2 – Teal Cyan
+    to: "#3b82f6",
+    glow: "rgba(6,182,212,0.28)"
+  },
+  {
+    from: "#38bdf8",   // Day 3 – Sky Blue
+    to: "#0284c7",
+    glow: "rgba(56,189,248,0.28)"
+  }
 ];
-
 export default function Timeline() {
     const [events, setEvents] = useState([]);
     const sectionRef = useRef(null);
@@ -45,8 +55,8 @@ export default function Timeline() {
     });
     const lineColor = useTransform(
         centerProgress,
-        [0, 0.5, 1],
-        ["#6366f1", "#a855f7", "#ec4899"]
+        [0, 1],
+        ["#22d3ee", "#0ea5e9"]
     );
 
     useEffect(() => {
@@ -78,18 +88,22 @@ export default function Timeline() {
                     transition={{ duration: 0.6 }}
                 >
                     <div className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2">
-                        3 DAYS. 3 EXPERIENCES
+                        <span className="text-white/90"> 3 </span>
+                        <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2"> DAYS. </span>
+                        <span className="text-white/90"> 3 </span>
+                        <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2"> EXPERIENCES </span>
                     </div>
+
                     <p className="text-base md:text-lg text-white/70 mb-6">March 11-13, 2026</p>
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/[.06] mb-6">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
-                        <span className="text-[11px] tracking-[0.25em] text-purple-300 uppercase font-semibold">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-6">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                        <span className="text-[11px] tracking-[0.25em] text-primary uppercase font-semibold">
                             Schedule
                         </span>
                     </div>
                     <h2 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight">
                         EVENT{" "}
-                        <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent">
                             TIMELINE
                         </span>
                     </h2>
@@ -105,7 +119,7 @@ export default function Timeline() {
                         className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block"
                         style={{
                             backgroundImage:
-                                "repeating-linear-gradient(to bottom,rgba(99,102,241,.35) 0px,rgba(99,102,241,.35) 6px,transparent 6px,transparent 18px)",
+                                "repeating-linear-gradient(to bottom,rgba(34,211,238,.35) 0px,rgba(34,211,238,.35) 6px,transparent 6px,transparent 18px)",
                         }}
                     />
                     <motion.div
@@ -215,7 +229,7 @@ export default function Timeline() {
 
                     {/* Bottom cap */}
                     <div className="hidden md:flex justify-center mt-8">
-                        <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 opacity-50" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 opacity-50" />
                     </div>
                 </div>
             </div>
@@ -400,7 +414,7 @@ function TimelineBubbleCard({
 
                         {/* ── Row 4: Time + Speaker ── */}
                         <div className="flex flex-col gap-2">
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-500/[.08] border border-indigo-500/[.15] w-fit">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border-primary/25 text-primary/90 w-fit">
                                 <svg
                                     width="13"
                                     height="13"
@@ -415,12 +429,12 @@ function TimelineBubbleCard({
                                     <circle cx="12" cy="12" r="10" />
                                     <polyline points="12 6 12 12 16 14" />
                                 </svg>
-                                <span className="text-indigo-300/90 text-[11px] font-semibold tracking-wide">
+                                <span className="text-[11px] font-semibold tracking-wide">
                                     {event.time}
                                 </span>
                             </div>
 
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-purple-500/[.08] border border-purple-500/[.15] w-fit">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primaryDark/10 border-primaryDark/25 text-primaryDark/90 w-fit">
                                 <svg
                                     width="13"
                                     height="13"
@@ -430,12 +444,13 @@ function TimelineBubbleCard({
                                     strokeWidth="2.5"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="text-primary shrink-0"
+                                    className="text-primaryDark shrink-0"
                                 >
                                     <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
                                     <circle cx="12" cy="7" r="4" />
                                 </svg>
-                                <span className="text-purple-300/90 text-[11px] font-semibold tracking-wide">
+                                <span className="text-[11px] font-semibold tracking-wide"
+                                style={{color: accent.from}}>
                                     {event.speaker}
                                 </span>
                             </div>

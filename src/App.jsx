@@ -101,8 +101,8 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
           <path d="M600 0C600 0 500 100 500 200C500 300 600 400 600 500C600 600 500 700 500 800C500 900 600 1000 600 1100V1200H600V0Z" fill="url(#wave-gradient)" fillOpacity="0.1" />
           <defs>
             <linearGradient id="wave-gradient" x1="550" y1="0" x2="550" y2="1200">
-              <stop offset="0%" stopColor="#6366f1" />
-              <stop offset="100%" stopColor="#8b5cf6" />
+              <stop offset="0%" stopColor="#22d3ee" />
+              <stop offset="100%" stopColor="#0ea5e9" />
             </linearGradient>
           </defs>
         </svg>
@@ -274,11 +274,11 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 Data Conclave '26
               </h1>
 
-              <p className="text-[#9CA3AF] leading-relaxed mb-10 max-w-xl text-base sm:text-lg mx-auto lg:mx-0">
+              <p className="text-cyan leading-relaxed mb-10 max-w-xl text-base sm:text-lg mx-auto lg:mx-0">
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-              <p className="text-sm tracking-wide text-primary mb-4">
+              <p className="text-sm tracking-wide text-cyan mb-4">
                 11 – 13 MARCH 2026
               </p>
               <div className="flex justify-center lg:justify-start items-center">
@@ -326,7 +326,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               </defs>
             </svg>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 text-center">
-          <div className="text-xs tracking-[0.2em] text-primary/80 mb-4 uppercase font-semibold">
+          <div className="text-xs tracking-[0.2em] text-cyan/300 mb-4 uppercase font-semibold">
             The Ultimate Platform for Unforgettable Events
           </div>
 
@@ -350,7 +350,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               return (
                 <motion.div
                   key={unit}
-                  className="backdrop-blur-md bg-gradient-to-br from-purple-500/20 to-indigo-500/20 border border-white/10 rounded-2xl p-2 sm:p-3 lg:p-6 min-w-[50px] sm:min-w-[80px] lg:min-w-[130px] min-h-[50px] sm:min-h-[80px] lg:min-h-[130px] flex flex-col items-center shrink-0"
+                  className="backdrop-blur-md bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-white/10 rounded-2xl p-2 sm:p-3 lg:p-6 min-w-[50px] sm:min-w-[80px] lg:min-w-[130px] min-h-[50px] sm:min-h-[80px] lg:min-h-[130px] flex flex-col items-center shrink-0"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   style={{ boxSizing: 'border-box' }}
@@ -404,10 +404,14 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       <section id="speakers" className="relative py-16 sm:py-24 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300 mb-3 font-semibold">
               Featured Speakers
             </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">Meet Our Speakers</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
+              <span className="text-white/90"> Meet Our </span>
+              <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2">Speakers</span>
+            </h2>
+            
             <p className="text-white/60 max-w-2xl mx-auto">
               Lineup to be finalized. These are placeholder profiles for layout preview.
             </p>
@@ -428,13 +432,13 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: idx * 0.08 }}
               >
-                <div className="w-16 h-16 rounded-full p-[3px] bg-gradient-to-br from-indigo-400 to-purple-500 mb-4">
+                <div className="w-16 h-16 rounded-full p-[3px] bg-gradient-to-br from-cyan-400 to-blue-500 mb-4">
                   <div className="w-full h-full rounded-full bg-white overflow-hidden flex items-center justify-center">
                     <img src={speaker.logo} alt={speaker.name} className="w-[72%] h-[72%] object-contain" />
                   </div>
                 </div>
                 <h3 className="text-lg font-semibold leading-tight mb-1">{speaker.name}</h3>
-                <p className="text-sm text-purple-300 mb-3">{speaker.role}</p>
+                <p className="text-sm text-cyan-300 mb-3">{speaker.role}</p>
                 <div className="inline-flex items-center rounded-full border border-white/15 px-3 py-1 text-[11px] text-white/70">
                   {speaker.topic}
                 </div>
@@ -448,10 +452,13 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       <section id="sponsors" className="relative py-16 sm:py-20 px-4 sm:px-8 lg:px-16">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300 mb-3 font-semibold">
               Our Sponsors
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">Powered By Supporters</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
+              <span className="text-white/90"> Powered By </span>
+              <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2">Supporters</span>
+            </h2>
             <p className="text-white/60">Placeholder sponsor slots. Final logos can be replaced anytime.</p>
           </div>
 
@@ -483,10 +490,13 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       <section id="throwback" className="relative py-16 sm:py-24 px-4 sm:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-purple-300 mb-3 font-semibold">
+            <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300 mb-3 font-semibold">
               DATA CONCLAVE ARCHIVES
             </p>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2">DC '25</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
+              <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2">DC '25</span>
+
+            </h2>
             <p className="text-white/60">A look back at key moments, sessions, and experiences from Data Conclave 2025.</p>
           </div>
 
@@ -524,7 +534,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
             transition={{ duration: 0.7, ease: 'easeOut' }}
           >
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 tracking-wide">
-              <span className="bg-gradient-to-r from-purple-400 via-indigo-400 to-purple-600 bg-clip-text text-transparent pr-2">WHO</span>
+              <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2">WHO</span>
               <span className="text-white/90"> WE ARE</span>
             </h2>
             <p className="text-gray-300 leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0 text-base lg:text-lg" style={{ lineHeight: '1.7' }}>
@@ -640,9 +650,9 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{
                     background:
-                      'conic-gradient(from 180deg at 50% 50%, #a78bfa 0deg, #6366f1 180deg, #a78bfa 360deg)',
-                    opacity: 0.18,
-                    filter: 'blur(8px)',
+                      'conic-gradient(from 180deg at 50% 50%, rgba(34,211,238,0.8) 0deg, rgba(14,165,233,0.8) 180deg, rgba(34,211,238,0.8) 360deg)',
+                    opacity: 0.22,
+                    filter: 'blur(10px)',
                   }}
                 />
 
@@ -669,9 +679,9 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                   className="absolute inset-0 rounded-full pointer-events-none"
                   style={{
                     background:
-                      'conic-gradient(from 180deg at 50% 50%, #60a5fa 0deg, #2563eb 180deg, #60a5fa 360deg)',
-                    opacity: 0.18,
-                    filter: 'blur(8px)',
+                      'conic-gradient(from 180deg at 50% 50%, rgba(34,211,238,0.8) 0deg, rgba(14,165,233,0.8) 180deg, rgba(34,211,238,0.8) 360deg)',
+                    opacity: 0.22,
+                    filter: 'blur(10px)',
                   }}
                 />
 
@@ -687,7 +697,6 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
             </div>
           </motion.div>
 
-
         </div>
       </section>
 
@@ -696,7 +705,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <div className="text-xl font-bold">DATA CONCLAVE</div>
-            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500"></div>
           </div>
 
           <div className="text-sm text-gray-500">
