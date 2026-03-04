@@ -66,12 +66,12 @@ export default function App() {
     // You may want to add event listeners here if needed
   }, []);
   useEffect(() => {
-  const interval = setInterval(() => {
-    setCountdown(getCountdown());
-  }, 1000);
+    const interval = setInterval(() => {
+      setCountdown(getCountdown());
+    }, 1000);
 
-  return () => clearInterval(interval);
-}, []);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -163,7 +163,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
+        <button
           className="lg:hidden p-2 text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
@@ -212,9 +212,8 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 <motion.a
                   key={id}
                   href={href}
-                  className={`text-2xl font-semibold ${
-                    activeSection === id ? 'text-white' : 'text-gray-400'
-                  }`}
+                  className={`text-2xl font-semibold ${activeSection === id ? 'text-white' : 'text-gray-400'
+                    }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -278,10 +277,10 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-              <p className="text-sm tracking-wide text-cyan mb-4">
-                11 – 13 MARCH 2026
-              </p>
-              <div className="flex justify-center lg:justify-start items-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-8 mb-12">
+                <p className="text-sm tracking-wide text-cyan uppercase font-bold">
+                  11 – 13 MARCH 2026
+                </p>
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
                   target="_blank"
@@ -316,15 +315,15 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       {/* Countdown Section with Photo Background */}
       <section className="relative py-16 sm:py-24 px-4 sm:px-8 lg:px-16">
         {/* Background Photo */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,194,255,0.06),transparent_70%)]"/>
-            <svg width="100%" height="100%" viewBox="0 0 1920 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="person-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#374151" />
-                  <stop offset="100%" stopColor="#1f2937" />
-                </linearGradient>
-              </defs>
-            </svg>
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,194,255,0.06),transparent_70%)]" />
+        <svg width="100%" height="100%" viewBox="0 0 1920 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="person-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#374151" />
+              <stop offset="100%" stopColor="#1f2937" />
+            </linearGradient>
+          </defs>
+        </svg>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 text-center">
           <div className="text-xs tracking-[0.2em] text-cyan/300 mb-4 uppercase font-semibold">
             The Ultimate Platform for Unforgettable Events
@@ -411,7 +410,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
               <span className="text-white/90"> Meet Our </span>
               <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2">Speakers</span>
             </h2>
-            
+
             <p className="text-white/60 max-w-2xl mx-auto">
               Lineup to be finalized. These are placeholder profiles for layout preview.
             </p>
