@@ -441,6 +441,19 @@ function TimelineBubbleCard({
                             </div>
                         </div>
 
+                        {event.day === "DAY 3" && event.flow?.length > 0 && (
+                            <div className="mt-4 rounded-xl bg-white/[.03] border border-white/[.06] p-3">
+                                <div className="text-[10px] uppercase tracking-widest text-white/35 font-semibold mb-2">
+                                    Day 3 Schedule
+                                </div>
+                                <ul className="space-y-1.5 text-[11px] text-white/70 leading-relaxed">
+                                    {event.flow.map((slot, i) => (
+                                        <li key={i}>{slot}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
                         {mobile && (
                             <div className="mt-4 rounded-lg border border-white/[.06] bg-white/[.03] px-3 py-2.5">
                                 <div className="text-[10px] uppercase tracking-widest text-white/35 font-semibold mb-1.5">
