@@ -211,9 +211,8 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 <motion.a
                   key={id}
                   href={href}
-                  className={`text-2xl font-semibold${
-                  activeSection === id ? 'text-white' : 'text-gray-400'
-                  }`}
+                  className={`text-2xl font-semibold${activeSection === id ? 'text-white' : 'text-gray-400'
+                    }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -258,7 +257,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
       {/* Hero Section with Photo Overlay */}
       <section className="relative pt-24 pb-10 lg:pt-28 lg:pb-10">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 w-full 
-          grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center py-12 lg:py-0">
+          grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center py-0 lg:py-0">
           {/* LEFT — TEXT */}
           <div className="text-center lg:text-left">
 
@@ -277,21 +276,21 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-              <p className="text-sm tracking-wide text-cyan mb-4">
-                12 – 13 MARCH 2026
-              </p>
-              <div className="flex justify-center lg:justify-start items-center">
+              <div className="flex flex-col items-start gap-2 mt-3">
+                <p className="text-sm tracking-wide text-cyan mb-3">
+                  12 – 13 MARCH 2026
+                </p>
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-8 py-4 rounded-full
-             bg-gradient-to-r from-[#00C2FF] to-[#2563EB]
-             font-semibold tracking-wide
-             shadow-lg shadow-cyan-500/20
-             hover:shadow-primary/40
-             hover:scale-105
-             transition-all duration-300"
+                    bg-gradient-to-r from-[#00C2FF] to-[#2563EB]
+                    font-semibold tracking-wide
+                    shadow-lg shadow-cyan-500/20
+                    hover:shadow-primary/40
+                    hover:scale-105
+                    transition-all duration-300"
                 >
                   Register Now
                 </a>
@@ -302,7 +301,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
 
           {/* RIGHT — RING (Centered Cleanly) */}
           <div className="relative flex justify-center items-center order-first lg:order-last">
-            <div className="relative w-full max-w-[300px] sm:max-w-[380px] lg:max-w-[460px] aspect-square lg:-translate-x-12">
+            <div className="relative w-full max-w-[260px] sm:max-w-[340px] lg:max-w-[420px] aspect-square lg:-translate-x-12">
               <NeuralRing />
             </div>
           </div>

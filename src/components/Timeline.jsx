@@ -88,17 +88,17 @@ export default function Timeline() {
                     transition={{ duration: 0.6 }}
                 >
                     <div className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2">
-                        <span className="text-white/90"> 3 </span>
+                        <span className="text-white/90"> 2 </span>
                         <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2"> DAYS. </span>
                         <span className="text-white/90"> 3 </span>
                         <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2"> EXPERIENCES </span>
                     </div>
 
                     <p className="text-base md:text-lg text-white/70 mb-6">March 12-13, 2026</p>
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-6">
+                    <div className="inline-flex items-center gap-0 px-3.5 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-6">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                         <span className="text-[11px] tracking-[0.25em] text-primary uppercase font-semibold">
-                            Schedule
+                        Schedule
                         </span>
                     </div>
                     <h2 className="text-3xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight">
@@ -108,7 +108,7 @@ export default function Timeline() {
                         </span>
                     </h2>
                     <p className="mt-4 text-white/40 max-w-lg mx-auto text-sm leading-relaxed">
-                        Three power-packed days of workshops, hackathons, talks &amp; panels
+                        Two power-packed days of workshops, hackathons, talks &amp; panels
                     </p>
                 </motion.div>
 
