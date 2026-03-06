@@ -6,12 +6,12 @@
         "dateLabel": "12 MAR",
         "title": "Workshop",
         "theme": "Hands-on Workshop Session",
-        "time": "9:00 AM – 4:30 PM",
+        "time": "9:00 AM – 4:00 PM",
         "duration": "7 hours",
         "mode": "Offline (On-campus)",
         "speaker": "Rasul Meeran Moideen",
         "short": "Workshop by Rasul Meeran Moideen",
-        "description": "Workshop is scheduled for March 12 from 9:00 AM to 4:30 PM by Rasul Meeran Moideen, Business Intelligence Developer - Tableau.",
+        "description": "Workshop is scheduled for March 12 from 9:00 AM to 4:00 PM by Rasul Meeran Moideen, Business Intelligence Developer - Tableau.",
         "flow": [
             "Workshop: 9:00 AM - 4:30 PM",
             "Speaker: Rasul Meeran Moideen (Business Intelligence Developer - Tableau)"
@@ -24,7 +24,7 @@
         "date": "March 13, 2026",
         "dateLabel": "13 MAR",
         "time": "9:00 AM – 4:00 PM",
-        "duration": "4 Tech Talks + Panel + Valedictory",
+        "theme": "4 Tech Talks + Panel + Valedictory",
         "mode": "Offline",
         "speaker": "Poornashri Anandakrishnan, Guna Roobene S, Santhosh, Sai Anirudh, Jasim Mohammed, Nitesh Prabhuram JP",
         "short": "Speaker sessions and panel",
