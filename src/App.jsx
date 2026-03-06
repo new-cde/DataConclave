@@ -8,8 +8,7 @@ const dscLogo = '/dsc-logo.png';
 const NAV_SECTIONS = [
   { id: 'about', label: 'ABOUT', href: '#' },
   { id: 'events-timeline', label: 'EVENTS', href: '#events-timeline' },
-  { id: 'speakers', label: 'SPEAKER', href: '#speakers' },
-  { id: 'sponsors', label: 'SPONSORS', href: '#sponsors' },
+  { id: 'speakers', label: 'SPEAKERS', href: '#speakers' },
   { id: 'throwback', label: "DC'25", href: '#throwback' },
 ];
 
@@ -19,9 +18,9 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const sectionRefs = useRef({});
 
-  // Countdown to March 11, 2026
+  // Countdown to March 12, 2026
   const getCountdown = () => {
-    const eventDate = new Date('2026-03-11T00:00:00');
+    const eventDate = new Date('2026-03-12T00:00:00');
     const now = new Date();
     let diff = Math.max(0, eventDate - now);
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -212,8 +211,9 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 <motion.a
                   key={id}
                   href={href}
-                  className={`text-2xl font-semibold ${activeSection === id ? 'text-white' : 'text-gray-400'
-                    }`}
+                  className={`text-2xl font-semibold${
+                  activeSection === id ? 'text-white' : 'text-gray-400'
+                  }`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -256,7 +256,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
 
 
       {/* Hero Section with Photo Overlay */}
-      <section className="relative min-h-[90vh] lg:min-h-screen flex items-center pt-24 lg:pt-0">
+      <section className="relative pt-24 pb-10 lg:pt-28 lg:pb-10">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 w-full 
           grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center py-12 lg:py-0">
           {/* LEFT — TEXT */}
@@ -277,10 +277,10 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-8 mb-12">
-                <p className="text-sm tracking-wide text-cyan uppercase font-bold">
-                  11 – 13 MARCH 2026
-                </p>
+              <p className="text-sm tracking-wide text-cyan mb-4">
+                12 – 13 MARCH 2026
+              </p>
+              <div className="flex justify-center lg:justify-start items-center">
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
                   target="_blank"
@@ -308,9 +308,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
           </div>
         </div>
         {/* Soft glow behind ring */}
-        <div className="absolute right-[30%] top-1/4 -translate-y-1/2
-    w-[500px] h-[500px] rounded-full
-    bg-[#00C2FF]/10 blur-3xl invisible lg:visible" />
+        <div className="absolute right-[30%] top-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#00C2FF]/10 blur-3xl invisible lg:visible" />
       </section>
       {/* Countdown Section with Photo Background */}
       <section className="relative py-16 sm:py-24 px-4 sm:px-8 lg:px-16">
@@ -326,7 +324,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
         </svg>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 text-center">
           <div className="text-xs tracking-[0.2em] text-cyan/300 mb-4 uppercase font-semibold">
-            The Ultimate Platform for Unforgettable Events
+            Where Data, Ideas, and Innovation Converge
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
@@ -334,7 +332,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
           </h2>
 
           <p className="text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Whether you're planning a small business conference or a large-scale festival, Data Conclave has you covered with cutting-edge tools and seamless experiences for your attendees.
+            A technical workshop and knowledge-sharing event bringing together students and experts to explore emerging trends in data science, artificial intelligence, and analytics through interactive sessions and discussions.
           </p>
 
           {/* Countdown Boxes */}
@@ -385,7 +383,7 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                   <path d="M5 2a1 1 0 00-1 1v1H3a2 2 0 00-2 2v8a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H6V3a1 1 0 00-1-1z" />
                 </svg>
-                March 11–13, 2026
+                March 12–13, 2026
               </div>
             </div>
           </div>
@@ -412,16 +410,19 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
             </h2>
 
             <p className="text-white/60 max-w-2xl mx-auto">
-              Lineup to be finalized. These are placeholder profiles for layout preview.
+              Esteemed speakers delivering insightful workshops, technical talks, and panel discussions.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: "Dr. Placeholder One", role: "AI Research Lead", topic: "Future of Applied AI", logo: "/dsc-logo.png" },
-              { name: "Ms. Sample Two", role: "Senior Data Scientist", topic: "ML in Production", logo: "/vite.svg" },
-              { name: "Mr. Demo Three", role: "Analytics Consultant", topic: "Data Storytelling", logo: "/dsc-logo.png" },
-              { name: "Prof. Mock Four", role: "Academic Expert", topic: "Responsible AI Systems", logo: "/vite.svg" },
+              { name: "Rasul Meeran Moideen", role: "Business Intelligence Developer - Tableau", topic: "Workshop", logo: "/speakers/rasul.jpeg" },
+              { name: "Poornashri Anandakrishnan", role: "HR Executive - HCL", topic: "Technical Talk + Panel Discussion", logo: "/speakers/poornashri.jpeg" },
+              { name: "Guna Roobene S", role: "Legal Associate - HCL", topic: "Technical Talk + Panel Discussion", logo: "/speakers/guna.jpeg" },
+              { name: "Santhosh", role: "Manager of Teams - DHL", topic: "Technical Talk + Panel Discussion", logo: "/speakers/santosh.jpeg" },
+              { name: "Sai Anirudh", role: "Product Manager - Aivirex Innovations", topic: "Technical Talk", logo: "/speakers/sai.jpeg" },
+              { name: "Jasim Mohammed", role: "Founder & CEO - Neur XR", topic: "Panel Discussion", logo: "/speakers/jasim.jpeg" },
+              { name: "Nitesh Prabhuram JP", role: "Founder & CEO - Gritscape", topic: "Panel Discussion", logo: "/speakers/nitesh.jpeg" },
             ].map((speaker, idx) => (
               <motion.div
                 key={speaker.name}
@@ -441,44 +442,6 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 <div className="inline-flex items-center rounded-full border border-white/15 px-3 py-1 text-[11px] text-white/70">
                   {speaker.topic}
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sponsors Section */}
-      <section id="sponsors" className="relative py-16 sm:py-20 px-4 sm:px-8 lg:px-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
-            <p className="text-[11px] uppercase tracking-[0.24em] text-cyan-300 mb-3 font-semibold">
-              Our Sponsors
-            </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3">
-              <span className="text-white/90"> Powered By </span>
-              <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2">Supporters</span>
-            </h2>
-            <p className="text-white/60">Placeholder sponsor slots. Final logos can be replaced anytime.</p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: "Title Sponsor", logo: "/dsc-logo.png" },
-              { name: "Tech Partner", logo: "/vite.svg" },
-              { name: "Community Partner", logo: "/dsc-logo.png" },
-            ].map((sponsor, idx) => (
-              <motion.div
-                key={sponsor.name}
-                className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 flex flex-col items-center text-center"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
-              >
-                <div className="w-20 h-20 rounded-xl bg-white p-3 mb-4 flex items-center justify-center">
-                  <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain" />
-                </div>
-                <p className="text-sm text-white/80 font-medium">{sponsor.name}</p>
               </motion.div>
             ))}
           </div>

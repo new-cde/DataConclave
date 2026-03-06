@@ -2,64 +2,41 @@
     {
         "id": 1,
         "day": "DAY 1",
-        "date": "March 11, 2026",
-        "dateLabel": "11 MAR",
+        "date": "March 12, 2026",
+        "dateLabel": "12 MAR",
         "title": "Workshop",
-        "theme": "Foundations of Data Science & Applied Analytics",
+        "theme": "Hands-on Workshop Session",
         "time": "9:00 AM – 4:30 PM",
-        "duration": "7.5 hours",
+        "duration": "7 hours",
         "mode": "Offline (On-campus)",
-        "speaker": "Mr. Arjun Rao – Data Scientist, Industry Professional",
-        "short": "Hands-on Data Science Workshop",
-        "description": "This workshop focuses on building strong foundations in Data Science through practical, hands-on sessions. Participants will gain exposure to essential tools, workflows, and problem-solving techniques used in real-world data projects.",
+        "speaker": "Rasul Meeran Moideen",
+        "short": "Workshop by Rasul Meeran Moideen",
+        "description": "Workshop is scheduled for March 12 from 9:00 AM to 4:30 PM by Rasul Meeran Moideen, Business Intelligence Developer - Tableau.",
         "flow": [
-            "Introduction to Data Science and real-world use cases",
-            "Data preprocessing and Exploratory Data Analysis (EDA)",
-            "Hands-on session using Python (NumPy, Pandas)",
-            "Mini case study and interactive Q&A"
+            "Workshop: 9:00 AM - 4:30 PM",
+            "Speaker: Rasul Meeran Moideen (Business Intelligence Developer - Tableau)"
         ],
         "side": "right"
     },
     {
         "id": 2,
         "day": "DAY 2",
-        "date": "March 12, 2026",
-        "dateLabel": "12 MAR",
-        "title": "Hackathon",
-        "theme": "Solving Real-World Problems Using Data",
-        "time": "8:00 AM – 5:00 PM",
-        "duration": "9 hours",
-        "mode": "Offline (Team-based)",
-        "speaker": "Mentors from academia and industry",
-        "short": "Innovation-driven Hackathon",
-        "description": "The hackathon encourages innovation, teamwork, and applied problem-solving. Teams will work on real-world problem statements and develop data-driven solutions within a limited time frame, enhancing collaboration and technical skills.",
-        "flow": [
-            "Problem statement release",
-            "Team formation and ideation",
-            "Data analysis and model development",
-            "Final presentation and judging"
-        ],
-        "side": "left"
-    },
-    {
-        "id": 3,
-        "day": "DAY 3",
         "date": "March 13, 2026",
         "dateLabel": "13 MAR",
-        "title": "Technical Talk & Panel Discussion",
-        "theme": "Careers, Research & the Future of Data Science",
-        "time": "9:00 AM – 3:30 PM",
-        "duration": "3 Tech Talks + Panel Discussion",
+        "time": "9:00 AM – 4:00 PM",
+        "duration": "4 Tech Talks + Panel + Valedictory",
         "mode": "Offline",
-        "speaker": "Industry & Academic Experts",
-        "short": "Expert Talk & Panel Discussion",
-        "description": "The final day includes a technical talk followed by a panel discussion featuring experts from academia and industry. The session focuses on career opportunities, research paths, industry expectations, and the future scope of Data Science.",
+        "speaker": "Poornashri Anandakrishnan, Guna Roobene S, Santhosh, Sai Anirudh, Jasim Mohammed, Nitesh Prabhuram JP",
+        "short": "Speaker sessions and panel",
+        "description": "March 13 includes four technical talks, a panel discussion, and valedictory session with industry speakers.",
         "flow": [
-            "Tech Talk 1: 9:00 AM - 10:00 AM",
-            "Tech Talk 2: 10:15 AM - 11:15 AM",
-            "Tech Talk 3: 11:30 AM - 12:30 PM",
-            "Panel Discussion: 2:30 PM - 3:30 PM"
+            "Technical Talk (Poornashri Anandakrishnan, HR Executive - HCL)",
+            "Technical Talk (Guna Roobene S, Legal Associate - HCL)",
+            "Technical Talk (Santhosh)",
+            "Technical Talk (Sai Anirudh, Product Manager - Aivirex Innovations)",
+            "Panel Discussion (Santhosh, Guna Roobene S, Poornashri Anandakrishnan, Jasim Mohammed, Nitesh Prabhuram JP)",
+            "Valedictory"
         ],
-        "side": "right"
+        "side": "left"
     }
 ]

@@ -94,7 +94,7 @@ export default function Timeline() {
                         <span className="bg-gradient-to-r from-[#00C2FF] to-[#2563EB] bg-clip-text text-transparent pr-2"> EXPERIENCES </span>
                     </div>
 
-                    <p className="text-base md:text-lg text-white/70 mb-6">March 11-13, 2026</p>
+                    <p className="text-base md:text-lg text-white/70 mb-6">March 12-13, 2026</p>
                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 mb-6">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                         <span className="text-[11px] tracking-[0.25em] text-primary uppercase font-semibold">
