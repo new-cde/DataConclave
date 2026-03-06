@@ -276,9 +276,8 @@ bg-[radial-gradient(circle_at_top_right,#1e293b_0%,#0A1424_40%,#020617_100%)]"> 
                 A premier technology and data intelligence summit bringing together
                 industry pioneers, researchers, and innovators shaping the future of AI and analytics.
               </p>
-              <div className="flex flex-col items-start gap-2 mt-3">
-                <p className="text-sm tracking-wide text-cyan mb-3">
-                  12 – 13 MARCH 2026
+              <div className="flex flex-col items-center lg:items-start gap-2 mt-3">
+                <p className="text-sm tracking-wide text-cyan mb-3 text-center lg:text-left">                  12 – 13 MARCH 2026
                 </p>
                 <a
                   href="https://docs.google.com/forms/d/e/1FAIpQLScne-RYUP2bqjw4778mci4fDJEhRtCVFUObiPjGcR3dl-2Xyg/viewform?usp=publish-editor"
